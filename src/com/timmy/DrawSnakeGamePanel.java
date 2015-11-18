@@ -1,13 +1,13 @@
-package com.clara;
+package com.timmy;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
-
-import javax.swing.JPanel;
 
 /** This class responsible for displaying the graphics, so the snake, grid, kibble, instruction text and high score
  * 
  * @author Clara
+ * @author Timmy
  *
  */
 public class DrawSnakeGamePanel extends JPanel {
@@ -58,9 +58,7 @@ public class DrawSnakeGamePanel extends JPanel {
         	break;
         }
         }
-        
-        
-        
+
     }
 
 	private void displayGameWon(Graphics g) {
@@ -147,7 +145,5 @@ public class DrawSnakeGamePanel extends JPanel {
         g.drawString("Press any key to begin!",100,200);		
         g.drawString("Press q to quit the game",100,300);		
     	}
-	
-    
-}
 
+}

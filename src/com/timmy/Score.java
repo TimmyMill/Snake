@@ -1,6 +1,6 @@
-package com.clara;
+package com.timmy;
 
-/** Keeps track of, and display the user's score
+/** Keeps track of, and displays the user's score
  * 
  */
 
@@ -56,7 +56,7 @@ public class Score {
 			return "New High Score!!";
 		} else {
 			return "";
-	}
+		}
 	}
 
 	public String getStringHighScore() {

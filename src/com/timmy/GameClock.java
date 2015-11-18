@@ -1,4 +1,4 @@
-package com.clara;
+package com.timmy;
 
 import java.util.TimerTask;
 
@@ -30,7 +30,7 @@ public class GameClock extends TimerTask {
 			case SnakeGame.DURING_GAME: {
 				//
 				snake.moveSnake();
-				if (snake.didEatKibble(kibble) == true) {		
+				if (snake.didEatKibble(kibble)) {
 					//tell kibble to update
 					kibble.moveKibble(snake);
 					Score.increaseScore();
@@ -45,8 +45,7 @@ public class GameClock extends TimerTask {
 				this.cancel();   //stop timer
 				break;
 			}
-			
-		
+
 		}
 				
 		gamePanel.repaint();		//In every circumstance, must update screen

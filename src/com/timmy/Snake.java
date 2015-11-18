@@ -1,4 +1,4 @@
-package com.clara;
+package com.timmy;
 
 import java.awt.Point;
 import java.util.LinkedList;
@@ -72,7 +72,7 @@ public class Snake {
 	public LinkedList<Point> segmentsToDraw(){
 		//Return a list of the actual x and y coordinates of the top left of each snake segment
 		//Useful for the Panel class to draw the snake
-		LinkedList<Point> segmentCoordinates = new LinkedList<Point>();
+		LinkedList<Point> segmentCoordinates = new LinkedList<>();
 		for (int segment = 1 ; segment <= snakeSize ; segment++ ) {
 			//search array for each segment number
 			for (int x = 0 ; x < maxX ; x++) {
@@ -133,22 +133,19 @@ public class Snake {
 		//Did you hit the wall, snake? 
 		//Or eat your tail? Don't move. 
 
-		if (hitWall == true || ateTail == true) {
+		if (hitWall || ateTail) {
 			SnakeGame.setGameStage(SnakeGame.GAME_OVER);
 			return;
 		}
 
-		//Use snakeSquares array, and current heading, to move snake
-
-		//Put a 1 in new snake head square
-		//increase all other snake segments by 1
-		//set tail to 0 if snake did not just eat
-		//Otherwise leave tail as is until snake has grown the correct amount 
-
-		//Find the head of the snake - snakeHeadX and snakeHeadY
-
-		//Increase all snake segments by 1
-		//All non-zero elements of array represent a snake segment
+		/* Use snakeSquares array, and current heading, to move snake.
+		 * Put a 1 in new snake head square.
+		 * Increase all other snake segments by 1.
+		 * Set tail to 0 if snake did not just eat, otherwise leave tail as is until snake has grown the correct amount.
+		 * Find the head of the snake - snakeHeadX and snakeHeadY
+		 * Increase all snake segments by 1.
+		 * All non-zero elements of array represent a snake segment
+		 */
 
 		for (int x = 0 ; x < maxX ; x++) {
 			for (int y = 0 ; y < maxY ; y++){
@@ -195,10 +192,9 @@ public class Snake {
 		//Otherwise, game is still on. Add new head
 		snakeSquares[snakeHeadX][snakeHeadY] = 1; 
 
-		//If snake did not just eat, then remove tail segment
-		//to keep snake the same length.
-		//find highest number, which should now be the same as snakeSize+1, and set to 0
-		
+		/* If snake did not just eat, then remove tail segment to keep snake the same length.
+		 * Find highest number, which should now be the same as snakeSize+1, and set to 0 */
+
 		if (justAteMustGrowThisMuch == 0) {
 			for (int x = 0 ; x < maxX ; x++) {
 				for (int y = 0 ; y < maxY ; y++){
@@ -244,21 +240,21 @@ public class Snake {
 	}
 
 	public String toString(){
-		String textsnake = "";
+		String textSnake = "";
 		//This looks the wrong way around. Actually need to do it this way or snake is drawn flipped 90 degrees. 
 		for (int y = 0 ; y < maxY ; y++) {
 			for (int x = 0 ; x < maxX ; x++){
-				textsnake = textsnake + snakeSquares[x][y];
+				textSnake = textSnake + snakeSquares[x][y];
 			}
-			textsnake += "\n";
+			textSnake += "\n";
 		}
-		return textsnake;
+		return textSnake;
 	}
 
 	public boolean wonGame() {
 
-		//If all of the squares have snake segments in, the snake has eaten so much kibble 
-		//that it has filled the screen. Win!
+		/* If all of the squares have snake segments in, the snake has eaten so much kibble
+		 * that it has filled the screen. Win! */
 		for (int x = 0 ; x < maxX ; x++) {
 			for (int y = 0 ; y < maxY ; y++){
 				if (snakeSquares[x][y] == 0) {
@@ -282,10 +278,10 @@ public class Snake {
 	}
 
 	public boolean isGameOver() {
-		if (hitWall == true || ateTail == true){
+		if (hitWall || ateTail){
 			SnakeGame.setGameStage(SnakeGame.GAME_OVER);
 			return true;
-			
+
 		}
 		return false;
 	}

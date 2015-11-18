@@ -1,4 +1,4 @@
-package com.clara;
+package com.timmy;
 
 import java.util.Random;
 
@@ -24,14 +24,13 @@ public class Kibble {
 		
 		Random rng = new Random();
 		boolean kibbleInSnake = true;
-		while (kibbleInSnake == true) {
+		while (kibbleInSnake) {
 			//Generate random kibble location
 			kibbleX = rng.nextInt(SnakeGame.xSquares);
 			kibbleY = rng.nextInt(SnakeGame.ySquares);
 			kibbleInSnake = s.isSnakeSegment(kibbleX, kibbleY);
 		}
-		
-		
+
 	}
 
 	public int getKibbleX() {
@@ -42,6 +41,4 @@ public class Kibble {
 		return kibbleY;
 	}
 
-
-	
 }
