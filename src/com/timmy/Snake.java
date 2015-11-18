@@ -43,8 +43,8 @@ public class Snake {
 
 	protected void createStartSnake(){
 		//snake starts as 3 horizontal squares in the center of the screen, moving left
-		int screenXCenter = (int) maxX/2;  //Cast just in case we have an odd number
-		int screenYCenter = (int) maxY/2;  //Cast just in case we have an odd number
+		int screenXCenter = (int) maxX/2;  /* Cast just in case we have an odd number */
+		int screenYCenter = (int) maxY/2;  /* Cast just in case we have an odd number */
 
 		snakeSquares[screenXCenter][screenYCenter] = 1;
 		snakeSquares[screenXCenter+1][screenYCenter] = 2;
@@ -70,8 +70,8 @@ public class Snake {
 	}
 
 	public LinkedList<Point> segmentsToDraw(){
-		//Return a list of the actual x and y coordinates of the top left of each snake segment
-		//Useful for the Panel class to draw the snake
+		/* Return a list of the actual x and y coordinates of the top left of each snake segment
+		 * Useful for the Panel class to draw the snake */
 		LinkedList<Point> segmentCoordinates = new LinkedList<>();
 		for (int segment = 1 ; segment <= snakeSize ; segment++ ) {
 			//search array for each segment number
@@ -112,11 +112,12 @@ public class Snake {
 //	}
 
 	protected void moveSnake(){
-		//Called every clock tick
-		
-		//Must check that the direction snake is being sent in is not contrary to current heading
-		//So if current heading is down, and snake is being sent up, then should ignore.
-		//Without this code, if the snake is heading up, and the user presses left then down quickly, the snake will back into itself.
+		/* Called every clock tick */
+
+		/* Must check that the direction snake is being sent in is not contrary to current heading
+		 * So if current heading is down, and snake is being sent up, then should ignore.
+		 * Without this code, if the snake is heading up, and the user presses left then down quickly, the snake will back into itself.
+		 */
 		if (currentHeading == DIRECTION_DOWN && lastHeading == DIRECTION_UP) {
 			currentHeading = DIRECTION_UP; //keep going the same way
 		}
@@ -130,9 +131,7 @@ public class Snake {
 			currentHeading = DIRECTION_LEFT; //keep going the same way
 		}
 		
-		//Did you hit the wall, snake? 
-		//Or eat your tail? Don't move. 
-
+		//If the snake hits the wall or eats its tail, then gameStage is set to GAME_OVER
 		if (hitWall || ateTail) {
 			SnakeGame.setGameStage(SnakeGame.GAME_OVER);
 			return;
@@ -146,7 +145,6 @@ public class Snake {
 		 * Increase all snake segments by 1.
 		 * All non-zero elements of array represent a snake segment
 		 */
-
 		for (int x = 0 ; x < maxX ; x++) {
 			for (int y = 0 ; y < maxY ; y++){
 				if (snakeSquares[x][y] != 0) {
@@ -194,7 +192,6 @@ public class Snake {
 
 		/* If snake did not just eat, then remove tail segment to keep snake the same length.
 		 * Find highest number, which should now be the same as snakeSize+1, and set to 0 */
-
 		if (justAteMustGrowThisMuch == 0) {
 			for (int x = 0 ; x < maxX ; x++) {
 				for (int y = 0 ; y < maxY ; y++){

@@ -22,19 +22,17 @@ public class Score {
 	}
 	
 	public static void increaseScore() {
-		
 		score = score + increment;
-		
 	}
 	
 	public int getScore(){
 		return score;
 	}
 	
-	//Checks if current score is greater than the current high score. 
-	//updates high score and returns true if so.
-	
-	public boolean gameOver(){
+	/* Checks if current score is greater than the current high score.
+	 * updates high score and returns true if so.
+	 */
+    public boolean gameOver(){
 		
 		if (score > highScore) {
 			highScore = score;
