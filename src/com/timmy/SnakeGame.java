@@ -96,16 +96,12 @@ public class SnakeGame {
 		});
 	}
 
-	public static int getGameStage() {
-		return gameStage;
-	}
+	public static int getGameStage() {return gameStage;}
 
 	public static boolean gameEnded() {
 		//If gameStage is GAME_OVER or GAME_WON, boolean method returns true
 		return gameStage == GAME_OVER || gameStage == GAME_WON;
 	}
 
-	public static void setGameStage(int gameStage) {
-		SnakeGame.gameStage = gameStage;
-	}
+	public static void setGameStage(int gameStage) {SnakeGame.gameStage = gameStage;}
 }

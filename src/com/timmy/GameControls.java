@@ -12,22 +12,29 @@ public class GameControls implements KeyListener{
 	}
 	
 	public void keyPressed(KeyEvent ev) {
-		//keyPressed events are for catching events like function keys, enter, arrow keys
-		//We want to listen for arrow keys to move snake
-		//Has to id if user pressed arrow key, and if so, send info to Snake object
+		/*
+		 * keyPressed events are for catching events like function keys, enter, arrow keys
+		 * We want to listen for arrow keys to move snake
+		 * Has to id if user pressed arrow key, and if so, send info to Snake object
 
-		//is game running? No? tell the game to draw grid, start, etc.
-		
-		//Get the component which generated this event
-		//Hopefully, a DrawSnakeGamePanel object.
-		//It would be a good idea to catch a ClassCastException here. 
-		
+		 * Is game running? No? tell the game to draw grid, start, etc.
+
+		 * Get the component which generated this event
+		 * Hopefully, a DrawSnakeGamePanel object.
+		 * It would be a good idea to catch a ClassCastException here.
+		 */
+
 		DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
 
+		/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
 		if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME){
 			//Start the game
 			SnakeGame.setGameStage(SnakeGame.DURING_GAME);
-			SnakeGame.newGame();
+			SnakeGame.newGame(); //Start game by calling newGame method
+			/* NewGame creates:
+			 * the timer
+			 * the game clock*/
+
 			panel.repaint();
 			return;
 		}
