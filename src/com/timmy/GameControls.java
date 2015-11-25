@@ -29,7 +29,7 @@ public class GameControls implements KeyListener{
 		try {
             DrawSnakeGamePanel panel = (DrawSnakeGamePanel) ev.getComponent();
 
-		/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
+		    /* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
             if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME) {
                 //Start the game
                 SnakeGame.setGameStage(SnakeGame.DURING_GAME);
@@ -43,9 +43,14 @@ public class GameControls implements KeyListener{
                 return;
             }
 
+            /* If the game has ended, reset the snake's position and the score
+             * Cancel the timer and terminate any remaining scheduled tasks
+            */
             if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER) {
                 snake.reset();
                 Score.resetScore();
+                SnakeGame.timer.cancel();
+                SnakeGame.timer.purge();
 
                 //Need to start the timer and start the game again
                 SnakeGame.newGame();
@@ -56,7 +61,8 @@ public class GameControls implements KeyListener{
 
 		/* This is used to control the snake's movement
 		*  Each time a key is pressed, the corresponding method is called
-		*  to control snake movement*/
+		*  to control snake movement
+		*/
 
             if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
                 //System.out.println("snake down");
