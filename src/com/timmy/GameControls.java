@@ -19,7 +19,7 @@ public class GameControls implements KeyListener{
      * We want to listen for arrow keys to move snake
      * Has to ID if user pressed arrow key, and if so, send info to Snake object
      * Is game running? No? tell the game to draw grid, start, etc.
-     */
+    */
 
 	public void keyPressed(KeyEvent ev) {
 
