@@ -19,7 +19,7 @@ public class Snake {
 	//A non-zero number means part of the snake is in the square
 	//The head of the snake is 1, rest of segments are numbered in order
 
-	private int currentHeading;  //Direction snake is going in, ot direction user is telling snake to go
+	private int currentHeading;  //Direction snake is going in, or direction user is telling snake to go
 	private int lastHeading;    //Last confirmed movement of snake. See moveSnake method
 	
 	private int snakeSize;   //size of snake - how many segments?
@@ -31,6 +31,7 @@ public class Snake {
 	private int maxX, maxY, squareSize;  
 	private int snakeHeadX, snakeHeadY; //store coordinates of head - first segment
 
+    /* Snake Constructor */
 	public Snake(int maxX, int maxY, int squareSize){
 		this.maxX = maxX;
 		this.maxY = maxY;
@@ -277,7 +278,6 @@ public class Snake {
 		}
 		return false;
 	}
-
 
 }
 

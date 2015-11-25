@@ -13,9 +13,7 @@ import java.util.LinkedList;
  */
 public class DrawSnakeGamePanel extends JPanel {
 
-	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
-
-	private Snake snake;
+    private Snake snake;
 	private Kibble kibble;
 	private Score score;
 	
@@ -25,7 +23,6 @@ public class DrawSnakeGamePanel extends JPanel {
 		this.score = sc;
 	}
 
-    //
 	public Dimension getPreferredSize() {
         return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
     }
@@ -35,7 +32,7 @@ public class DrawSnakeGamePanel extends JPanel {
         super.paintComponent(g);       
 
         /* Where are we at in the game? 4 phases.. */
-        gameStage = SnakeGame.getGameStage();
+        int gameStage = SnakeGame.getGameStage();
         
         switch (gameStage) {
         /* 1. Before game starts */
@@ -68,6 +65,7 @@ public class DrawSnakeGamePanel extends JPanel {
 		g.drawString("YOU WON SNAKE!!!", 150, 150);
 		
 	}
+
 	private void displayGameOver(Graphics g) {
 
 		g.clearRect(100,100,350,350);
@@ -98,16 +96,19 @@ public class DrawSnakeGamePanel extends JPanel {
 		int maxX = SnakeGame.xPixelMaxDimension;
 		int maxY= SnakeGame.yPixelMaxDimension;
 		int squareSize = SnakeGame.squareSize;
-		
-		g.clearRect(0, 0, maxX, maxY);
 
-		g.setColor(Color.RED);
+//        g.setColor(Color.decode("#0f240f"));
+        g.setColor(Color.decode("#003638"));
+        g.fillRect(0, 0, maxX, maxY);
 
-		//Draw grid - horizontal lines
+        /* Draw grid */
+        g.setColor(Color.decode("#00FF00"));
+
+        /* horizontal lines */
 		for (int y=0; y <= maxY ; y+= squareSize){			
 			g.drawLine(0, y, maxX, y);
 		}
-		//Draw grid - vertical lines
+		/* vertical lines */
 		for (int x=0; x <= maxX ; x+= squareSize){			
 			g.drawLine(x, 0, x, maxY);
 		}
@@ -115,8 +116,8 @@ public class DrawSnakeGamePanel extends JPanel {
 
 	private void displayKibble(Graphics g) {
 
-		//Draw the kibble in green
-		g.setColor(Color.GREEN);
+		/* Draw the kibble */
+		g.setColor(Color.decode("#ff0800")); //Candy Apple Red
 
 		int x = kibble.getKibbleX() * SnakeGame.squareSize;
 		int y = kibble.getKibbleY() * SnakeGame.squareSize;
@@ -129,22 +130,22 @@ public class DrawSnakeGamePanel extends JPanel {
 
 		LinkedList<Point> coordinates = snake.segmentsToDraw();
 		
-		//Draw head in grey
-		g.setColor(Color.LIGHT_GRAY);
-		Point head = coordinates.pop();
-		g.fillRect((int)head.getX(), (int)head.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
+		/* Draws head */
+        g.setColor(Color.decode("#D2691E")); //Chocolate
+        Point head = coordinates.pop();
+        g.fillOval((int) head.getX(), (int) head.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
 		
-		//Draw rest of snake in black
-		g.setColor(Color.BLACK);
-		for (Point p : coordinates) {
-			g.fillRect((int)p.getX(), (int)p.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
+		/* Draws rest of snake */
+        g.setColor(Color.decode("#FF8C00")); //Dark Orange
+        for (Point p : coordinates) {
+			g.fillOval((int) p.getX(), (int) p.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
 		}
 
 	}
 
 	private void displayInstructions(Graphics g) {
         g.drawString("Press any key to begin!",100,200);		
-        g.drawString("Press q to quit the game",100,300);		
-    	}
+        g.drawString("Press q to quit the game",100,300);
+    }
 
 }
