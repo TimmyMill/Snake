@@ -184,8 +184,7 @@ public class Snake {
 		}
 
 		//Does this make the snake eat its tail?
-
-		if (snakeSquares[snakeHeadX][snakeHeadY] != 0) {
+        if (snakeSquares[snakeHeadX][snakeHeadY] != 0) {
 
 			ateTail = true;
 			SnakeGame.setGameStage(SnakeGame.GAME_OVER);
