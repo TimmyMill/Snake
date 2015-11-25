@@ -3,6 +3,10 @@ package com.timmy;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ *
+ */
+
 public class GameControls implements KeyListener{
 	
 	Snake snake;
@@ -31,8 +35,9 @@ public class GameControls implements KeyListener{
                 SnakeGame.setGameStage(SnakeGame.DURING_GAME);
                 SnakeGame.newGame(); //Start game by calling newGame method
 			/* NewGame creates:
-			 * the timer
-			 * the game clock */
+			* the timer
+			* the game clock
+			*/
 
                 panel.repaint();
                 return;

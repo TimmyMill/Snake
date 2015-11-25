@@ -12,13 +12,13 @@ public class Kibble {
 	private int kibbleX; //This is the square number (not pixel)
 	private int kibbleY;  //This is the square number (not pixel)
 	
-	public Kibble(Snake s){
-		/* Kibble needs to know where the snake is, so it does not create a kibble in the snake
-		 * Pick a random location for kibble, check if it is in the snake
-		 * If in snake, try again */
+    public Kibble(Snake s){
+        /* Kibble needs to know where the snake is, so it does not create a kibble in the snake
+         * Pick a random location for kibble, check if it is in the snake
+         * If in snake, try again */
 
-		moveKibble(s);
-	}
+        moveKibble(s);
+    }
 	
 	protected void moveKibble(Snake s){
 		

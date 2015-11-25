@@ -3,6 +3,10 @@ package com.timmy;
 import java.awt.Point;
 import java.util.LinkedList;
 
+/**
+ *
+ */
+
 public class Snake {
 
 	final int DIRECTION_UP = 0;

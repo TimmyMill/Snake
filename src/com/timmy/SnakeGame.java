@@ -3,6 +3,10 @@ package com.timmy;
 import javax.swing.*;
 import java.util.Timer;
 
+/**
+ *
+ */
+
 public class SnakeGame {
 
 	/* Pixels in window. 501 to have 50-pixel squares plus 1 to draw a border on last square */
@@ -19,6 +23,7 @@ public class SnakeGame {
 	protected static Score score;
 
 	/* Different game states used to show what's going on with the game */
+
 	static final int BEFORE_GAME = 1; /* Used to set up and initialize the game */
 	static final int DURING_GAME = 2; /* Used during gameplay */
 	static final int GAME_OVER = 3;   /* Used when the game has ended */
@@ -38,15 +43,21 @@ public class SnakeGame {
 	 * http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/FrameDemoProject/src/components/FrameDemo.java
 	 * http://docs.oracle.com/javase/tutorial/uiswing/painting/step2.html */
 
+    /* Create and set up the window.
+    */
 	private static void createAndShowGUI() {
-		/* Create and set up the window. */
+        /* Create a new JFrame */
+
 		snakeFrame = new JFrame();
 		snakeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-		snakeFrame.setSize(xPixelMaxDimension, yPixelMaxDimension);
+        snakeFrame.setSize(xPixelMaxDimension, yPixelMaxDimension);
+        snakeFrame.setLocationRelativeTo(null); //sets the window in the center of the screen
 		snakeFrame.setUndecorated(true); //hide title bar
 		snakeFrame.setVisible(true);
 		snakeFrame.setResizable(false);
+
+        /* Create a new JPanel from the GamePanel class */
 
 		snakePanel = new DrawSnakeGamePanel(snake, kibble, score);
 		snakePanel.setFocusable(true);
@@ -60,9 +71,12 @@ public class SnakeGame {
 		snakeFrame.setVisible(true);
 	}
 
-	/* Initialize components needed for the game */
+	/* Initialize components needed for the game
+	*/
 	private static void initializeGame() {
-		//Set up score, snake and first kibble
+
+		/* Set up score, snake and first kibble */
+
 		xSquares = xPixelMaxDimension / squareSize;
 		ySquares = yPixelMaxDimension / squareSize;
 
@@ -73,7 +87,8 @@ public class SnakeGame {
 		gameStage = BEFORE_GAME;
 	}
 
-	/* Create a new game */
+	/* Create a new game
+	*/
 	protected static void newGame() {
 		Timer timer = new Timer();
 		GameClock clockTick = new GameClock(snake, kibble, score, snakePanel);
@@ -83,6 +98,7 @@ public class SnakeGame {
 	public static void main(String[] args) {
 		/* Schedule a job for the event-dispatching thread:
 		 * creating and showing this application's GUI. */
+
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				initializeGame();
@@ -91,9 +107,10 @@ public class SnakeGame {
 		});
 	}
 
+    /* If gameStage is GAME_OVER or GAME_WON, boolean method returns true
+    */
 	public static boolean gameEnded() {
-		//If gameStage is GAME_OVER or GAME_WON, boolean method returns true
-		return gameStage == GAME_OVER || gameStage == GAME_WON;
+        return gameStage == GAME_OVER || gameStage == GAME_WON;
 	}
 
 	/* Get & Set Methods for game stage */

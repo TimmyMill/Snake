@@ -25,13 +25,11 @@ public class Score {
 		score = score + increment;
 	}
 	
-	public int getScore(){
-		return score;
-	}
+	public int getScore(){return score;}
 	
 	/* Checks if current score is greater than the current high score.
-	 * updates high score and returns true if so.
-	 */
+	*  Updates high score and returns true if so.
+	*/
     public boolean gameOver(){
 		
 		if (score > highScore) {
@@ -41,11 +39,9 @@ public class Score {
 		return false;
 	}
 
-	//These methods are useful for displaying score at the end of the game
+	/* These methods are useful for displaying score at the end of the game */
 	
-	public String getStringScore() {
-		return Integer.toString(score);
-	}
+	public String getStringScore() {return Integer.toString(score);}
 
 	public String newHighScore() {
 		
@@ -57,9 +53,7 @@ public class Score {
 		}
 	}
 
-	public String getStringHighScore() {
-		return Integer.toString(highScore);
-	}
+	public String getStringHighScore() {return Integer.toString(highScore);}
 	
 }
 
