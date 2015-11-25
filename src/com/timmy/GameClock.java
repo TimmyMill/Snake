@@ -35,7 +35,8 @@ public class GameClock extends TimerTask {
 				break;
 			}
 			case SnakeGame.DURING_GAME: {
-				//
+				/* Move the snake
+				* if the snake eats, move the kibble and increase the score */
 				snake.moveSnake();
 				if (snake.didEatKibble(kibble)) {
 					//tell kibble to update

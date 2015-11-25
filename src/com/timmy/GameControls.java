@@ -11,65 +11,67 @@ public class GameControls implements KeyListener{
 		this.snake = s;
 	}
 
-    /* keyPressed events are for catching events like function keys, enter, arrow keys
+    /* KeyPressed events are for catching events like function keys, enter, arrow keys
      * We want to listen for arrow keys to move snake
-     * Has to id if user pressed arrow key, and if so, send info to Snake object
-
+     * Has to ID if user pressed arrow key, and if so, send info to Snake object
      * Is game running? No? tell the game to draw grid, start, etc.
-
-     * Get the component which generated this event
-     * Hopefully, a DrawSnakeGamePanel object.
-     * It would be a good idea to catch a ClassCastException here.
      */
 
 	public void keyPressed(KeyEvent ev) {
 
-		DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
+        /* Get the component which generated this event, hopefully, a DrawSnakeGamePanel object.
+        * It would be a good idea to catch a ClassCastException here. */
+
+		try {
+            DrawSnakeGamePanel panel = (DrawSnakeGamePanel) ev.getComponent();
 
 		/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
-		if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME){
-			//Start the game
-			SnakeGame.setGameStage(SnakeGame.DURING_GAME);
-			SnakeGame.newGame(); //Start game by calling newGame method
+            if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME) {
+                //Start the game
+                SnakeGame.setGameStage(SnakeGame.DURING_GAME);
+                SnakeGame.newGame(); //Start game by calling newGame method
 			/* NewGame creates:
 			 * the timer
-			 * the game clock*/
+			 * the game clock */
 
-			panel.repaint();
-			return;
-		}
+                panel.repaint();
+                return;
+            }
 
-		if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER){
-			snake.reset();
-			Score.resetScore();
+            if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER) {
+                snake.reset();
+                Score.resetScore();
 
-			//Need to start the timer and start the game again
-			SnakeGame.newGame();
-			SnakeGame.setGameStage(SnakeGame.DURING_GAME);
-			panel.repaint();
-			return;
-		}
+                //Need to start the timer and start the game again
+                SnakeGame.newGame();
+                SnakeGame.setGameStage(SnakeGame.DURING_GAME);
+                panel.repaint();
+                return;
+            }
 
 		/* This is used to control the snake's movement
 		*  Each time a key is pressed, the corresponding method is called
 		*  to control snake movement*/
 
-		if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
-			//System.out.println("snake down");
-			snake.snakeDown();
-		}
-		if (ev.getKeyCode() == KeyEvent.VK_UP) {
-			//System.out.println("snake up");
-			snake.snakeUp();
-		}
-		if (ev.getKeyCode() == KeyEvent.VK_LEFT) {
-			//System.out.println("snake left");
-			snake.snakeLeft();
-		}
-		if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
-			//System.out.println("snake right");
-			snake.snakeRight();
-		}
+            if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
+                //System.out.println("snake down");
+                snake.snakeDown();
+            }
+            if (ev.getKeyCode() == KeyEvent.VK_UP) {
+                //System.out.println("snake up");
+                snake.snakeUp();
+            }
+            if (ev.getKeyCode() == KeyEvent.VK_LEFT) {
+                //System.out.println("snake left");
+                snake.snakeLeft();
+            }
+            if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
+                //System.out.println("snake right");
+                snake.snakeRight();
+            }
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
 
 	}
 

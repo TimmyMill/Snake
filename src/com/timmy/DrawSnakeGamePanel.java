@@ -24,7 +24,8 @@ public class DrawSnakeGamePanel extends JPanel {
 		this.kibble = k;
 		this.score = sc;
 	}
-	
+
+    //
 	public Dimension getPreferredSize() {
         return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
     }
@@ -33,32 +34,30 @@ public class DrawSnakeGamePanel extends JPanel {
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);       
 
-        /* Where are we at in the game? 4 phases.. 
-         * 1. Before game starts
-         * 2. During game
-         * 3. Game lost aka game over
-         * 4. or, game won
-         */
-
+        /* Where are we at in the game? 4 phases.. */
         gameStage = SnakeGame.getGameStage();
         
         switch (gameStage) {
-        case 1: {
+        /* 1. Before game starts */
+            case 1: {
         	displayInstructions(g);
         	break;
-        } 
-        case 2 : {
+            }
+        /* 2. During game */
+            case 2 : {
         	displayGame(g);
         	break;
-        }
-        case 3: {
+            }
+        /* 3. Game lost aka game over */
+            case 3: {
         	displayGameOver(g);
         	break;
-        }
-        case 4: {
+            }
+        /* 4. or, game won */
+            case 4: {
         	displayGameWon(g);
         	break;
-        }
+            }
         }
 
     }
