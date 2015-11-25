@@ -4,16 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
-/** This class responsible for displaying the graphics, so the snake, grid, kibble, instruction text, and high score
+/** This class is responsible for displaying the graphics used in the game:
+ * snake, grid, kibble, instruction text, and high score
  * 
  * @author Clara
  * @author Timmy
  *
  */
 public class DrawSnakeGamePanel extends JPanel {
-	
+
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
-	
+
 	private Snake snake;
 	private Kibble kibble;
 	private Score score;

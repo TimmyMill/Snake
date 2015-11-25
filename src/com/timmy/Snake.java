@@ -211,14 +211,9 @@ public class Snake {
 
 	}
 
-	protected boolean didHitWall(){
-		return hitWall;
+	protected boolean didHitWall(){return hitWall;}
 
-	}
-
-	protected boolean didEatTail(){
-		return ateTail;
-	}
+	protected boolean didEatTail(){return ateTail;}
 
 	public boolean isSnakeSegment(int kibbleX, int kibbleY) {
 		if (snakeSquares[kibbleX][kibbleY] == 0) {

@@ -2,6 +2,13 @@ package com.timmy;
 
 import java.util.TimerTask;
 
+/** This class is needed to run the game clock so that animation can happen
+ *  Every time the clock ticks, the game is updated and the run method in here is called
+ *
+ *  @author Clara
+ *  @author Timmy
+ */
+
 public class GameClock extends TimerTask {
 
 	Snake snake;

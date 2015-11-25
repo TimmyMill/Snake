@@ -10,19 +10,19 @@ public class GameControls implements KeyListener{
 	GameControls(Snake s){
 		this.snake = s;
 	}
-	
+
+    /* keyPressed events are for catching events like function keys, enter, arrow keys
+     * We want to listen for arrow keys to move snake
+     * Has to id if user pressed arrow key, and if so, send info to Snake object
+
+     * Is game running? No? tell the game to draw grid, start, etc.
+
+     * Get the component which generated this event
+     * Hopefully, a DrawSnakeGamePanel object.
+     * It would be a good idea to catch a ClassCastException here.
+     */
+
 	public void keyPressed(KeyEvent ev) {
-		/*
-		 * keyPressed events are for catching events like function keys, enter, arrow keys
-		 * We want to listen for arrow keys to move snake
-		 * Has to id if user pressed arrow key, and if so, send info to Snake object
-
-		 * Is game running? No? tell the game to draw grid, start, etc.
-
-		 * Get the component which generated this event
-		 * Hopefully, a DrawSnakeGamePanel object.
-		 * It would be a good idea to catch a ClassCastException here.
-		 */
 
 		DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
 
@@ -38,11 +38,11 @@ public class GameControls implements KeyListener{
 			panel.repaint();
 			return;
 		}
-		
+
 		if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER){
 			snake.reset();
 			Score.resetScore();
-			
+
 			//Need to start the timer and start the game again
 			SnakeGame.newGame();
 			SnakeGame.setGameStage(SnakeGame.DURING_GAME);
@@ -50,7 +50,10 @@ public class GameControls implements KeyListener{
 			return;
 		}
 
-		
+		/* This is used to control the snake's movement
+		*  Each time a key is pressed, the corresponding method is called
+		*  to control snake movement*/
+
 		if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
 			//System.out.println("snake down");
 			snake.snakeDown();
@@ -70,12 +73,10 @@ public class GameControls implements KeyListener{
 
 	}
 
-
 	@Override
 	public void keyReleased(KeyEvent ev) {
-		//We don't care about keyReleased events, but are required to implement this method anyway.		
+		//We don't care about keyReleased events, but are required to implement this method anyway.
 	}
-
 
 	@Override
 	public void keyTyped(KeyEvent ev) {
