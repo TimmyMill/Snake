@@ -28,7 +28,8 @@ public class DrawSnakeGamePanel extends JPanel {
         return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
     }
 
-    public void paintComponent(Graphics g) {
+    @Override
+	public void paintComponent(Graphics g) {
         super.paintComponent(g);       
 
         /* Where are we at in the game? 4 phases.. 
@@ -83,7 +84,7 @@ public class DrawSnakeGamePanel extends JPanel {
 		
 		g.drawString("press a key to play again", 150, 350);
 		g.drawString("Press q to quit the game",150,400);		
-    			
+
 	}
 
 	private void displayGame(Graphics g) {
