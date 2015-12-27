@@ -6,14 +6,14 @@ import java.util.Timer;
 
 public class SnakeGame {
 
-	/* Pixels in window. 501 to have 50-pixel squares plus 1 to draw a border on last square */
-	public final static int xPixelMaxDimension = 501;
-	public final static int yPixelMaxDimension = 501;
+	/* Pixels in window. 751 to have 50-pixel squares plus 1 to draw a border on last square */
+	public final static int xPixelMaxDimension = 751;
+	public final static int yPixelMaxDimension = 751;
 
 	public static int xSquares ;
 	public static int ySquares ;
 
-	public final static int squareSize = 50;
+	public final static int squareSize = 75;
 
 	protected static Snake snake ;
 
@@ -64,6 +64,7 @@ public class SnakeGame {
 
 		setGameStage(BEFORE_GAME);
 
+		snakeFrame.setLocationRelativeTo(null); //center window
 		snakeFrame.setVisible(true);
 	}
 

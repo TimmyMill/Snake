@@ -17,11 +17,24 @@ public class DrawSnakeGamePanel extends JPanel {
 	private Snake snake;
 	private Kibble kibble;
 	private Score score;
-	
+
+	//Images
+	private Image cupcake;
+	private Image nebula;
+	GameBackground background;
+
 	DrawSnakeGamePanel(Snake s, Kibble k, Score sc){
 		this.snake = s;
 		this.kibble = k;
 		this.score = sc;
+
+//		ImageIcon food = new ImageIcon("cageCupcakeV1.png");
+		ImageIcon food = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/cageCupcakeV1.png");
+		cupcake = food.getImage();
+		background = new GameBackground();
+//		ImageIcon background = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/nebula751.png");
+//		nebula = background.getImage();
+
 	}
 	
 	public Dimension getPreferredSize() {
@@ -30,7 +43,7 @@ public class DrawSnakeGamePanel extends JPanel {
 
     @Override
 	public void paintComponent(Graphics g) {
-        super.paintComponent(g);       
+        super.paintComponent(g);
 
         /* Where are we at in the game? 4 phases.. 
          * 1. Before game starts
@@ -90,7 +103,7 @@ public class DrawSnakeGamePanel extends JPanel {
 	private void displayGame(Graphics g) {
 		displayGameGrid(g);
 		displaySnake(g);
-		displayKibble(g);	
+		displayKibble(g);
 	}
 
 	private void displayGameGrid(Graphics g) {
@@ -98,17 +111,19 @@ public class DrawSnakeGamePanel extends JPanel {
 		int maxX = SnakeGame.xPixelMaxDimension;
 		int maxY= SnakeGame.yPixelMaxDimension;
 		int squareSize = SnakeGame.squareSize;
-		
+
+//		add(background);
+
 		g.clearRect(0, 0, maxX, maxY);
 
 		g.setColor(Color.RED);
 
 		//Draw grid - horizontal lines
-		for (int y=0; y <= maxY ; y+= squareSize){			
+		for (int y=0; y <= maxY ; y+= squareSize){
 			g.drawLine(0, y, maxX, y);
 		}
 		//Draw grid - vertical lines
-		for (int x=0; x <= maxX ; x+= squareSize){			
+		for (int x=0; x <= maxX ; x+= squareSize){
 			g.drawLine(x, 0, x, maxY);
 		}
 	}
@@ -116,28 +131,39 @@ public class DrawSnakeGamePanel extends JPanel {
 	private void displayKibble(Graphics g) {
 
 		//Draw the kibble in green
-		g.setColor(Color.GREEN);
+//		g.setColor(Color.GREEN);
+//		BufferedImage img = null;
+//
+//		try {
+//			img = ImageIO.read(new File("com.timmy/cageCupcakeV1.png"));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		ImageIcon img = new ImageIcon("com.timmy/cageCupcakeV1.png");
+//		cupcake = food.getImage();
 
 		int x = kibble.getKibbleX() * SnakeGame.squareSize;
 		int y = kibble.getKibbleY() * SnakeGame.squareSize;
 
-		g.fillRect(x+1, y+1, SnakeGame.squareSize-2, SnakeGame.squareSize-2);
-		
+		g.drawImage(cupcake, x, y, this);
+
+//		g.fillRect(x+1, y+1, SnakeGame.squareSize-2, SnakeGame.squareSize-2);
+
 	}
 
 	private void displaySnake(Graphics g) {
 
 		LinkedList<Point> coordinates = snake.segmentsToDraw();
 		
-		//Draw head in grey
-		g.setColor(Color.LIGHT_GRAY);
+		//Draw head
+		g.setColor(Color.decode("#D2691E")); //chocolate
 		Point head = coordinates.pop();
-		g.fillRect((int)head.getX(), (int)head.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
+		g.fillOval((int)head.getX(), (int)head.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
 		
-		//Draw rest of snake in black
-		g.setColor(Color.BLACK);
+		//Draw rest of snake
+		g.setColor(Color.decode("#FF8C00")); //dark orange
 		for (Point p : coordinates) {
-			g.fillRect((int)p.getX(), (int)p.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
+			g.fillOval((int)p.getX(), (int)p.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
 		}
 
 	}
