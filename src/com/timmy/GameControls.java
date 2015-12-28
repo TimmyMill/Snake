@@ -24,61 +24,80 @@ public class GameControls implements KeyListener{
 		 * It would be a good idea to catch a ClassCastException here.
 		 */
 
-		DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
+		try {
+			DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
 
-		/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
-		if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME){
-			//Start the game
-			SnakeGame.setGameStage(SnakeGame.DURING_GAME);
-			SnakeGame.newGame(); //Start game by calling newGame method
-			/* NewGame creates:
-			 * the timer
-			 * the game clock*/
+			/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
+			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME){
+				//Start the game
+				SnakeGame.setGameStage(SnakeGame.DURING_GAME);
+				SnakeGame.newGame(); //Start game by calling newGame method
+				/* NewGame creates:
+				 * the timer
+				 * the game clock*/
 
-			panel.repaint();
-			return;
-		}
-		
-		if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER){
-			snake.reset();
-			Score.resetScore();
-			//Cancel the timer and terminate any remaining tasks
-			SnakeGame.timer.cancel();
-			SnakeGame.timer.purge();
-			
-			//Need to start the timer and start the game again
-			SnakeGame.newGame();
-			SnakeGame.setGameStage(SnakeGame.DURING_GAME);
-			panel.repaint();
-			return;
+				panel.repaint();
+				return;
+			}
+
+			if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER){
+				snake.reset();
+				Score.resetScore();
+				//Cancel the timer and terminate any remaining tasks
+				SnakeGame.timer.cancel();
+				SnakeGame.timer.purge();
+
+				//Need to start the timer and start the game again
+				SnakeGame.newGame();
+				SnakeGame.setGameStage(SnakeGame.DURING_GAME);
+				panel.repaint();
+				return;
+			}
+
+			/* Snake Movement Controls
+			*/
+			if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
+				//System.out.println("snake down");
+				snake.snakeDown();
+			}
+			if (ev.getKeyCode() == KeyEvent.VK_UP) {
+				//System.out.println("snake up");
+				snake.snakeUp();
+			}
+			if (ev.getKeyCode() == KeyEvent.VK_LEFT) {
+				//System.out.println("snake left");
+				snake.snakeLeft();
+			}
+			if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
+				//System.out.println("snake right");
+				snake.snakeRight();
+			}
+
+			/* Toggle Portal on/off
+			*/
+			if (ev.getKeyCode() == KeyEvent.VK_W) {
+				if (snake.isPortalOn()) {
+					System.out.println("warped walls off");
+					snake.setPortalOn(false);
+				}
+				else if (!snake.isPortalOn()) {
+					System.out.println("warped walls on");
+					snake.setPortalOn(true);
+				}
+			}
+
 		}
 
-		
-		if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
-			//System.out.println("snake down");
-			snake.snakeDown();
-		}
-		if (ev.getKeyCode() == KeyEvent.VK_UP) {
-			//System.out.println("snake up");
-			snake.snakeUp();
-		}
-		if (ev.getKeyCode() == KeyEvent.VK_LEFT) {
-			//System.out.println("snake left");
-			snake.snakeLeft();
-		}
-		if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
-			//System.out.println("snake right");
-			snake.snakeRight();
+		catch (ClassCastException cce) {
+			cce.printStackTrace();
 		}
 
 	}
-
 
 	@Override
 	public void keyReleased(KeyEvent ev) {
 		//We don't care about keyReleased events, but are required to implement this method anyway.		
 	}
-
 
 	@Override
 	public void keyTyped(KeyEvent ev) {

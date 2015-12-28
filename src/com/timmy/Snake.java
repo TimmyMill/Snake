@@ -5,13 +5,14 @@ import java.util.LinkedList;
 
 public class Snake {
 
+	/* Directional Variables */
 	final int DIRECTION_UP = 0;
 	final int DIRECTION_DOWN = 1;
 	final int DIRECTION_LEFT = 2;
-	final int DIRECTION_RIGHT = 3;  //These are completely arbitrary numbers. 
+	final int DIRECTION_RIGHT = 3;  //These are completely arbitrary numbers.
 
-	private boolean hitWall = false;
-	private boolean ateTail = false;
+	private int currentHeading;  //Direction snake is going in, ot direction user is telling snake to go
+	private int lastHeading;    //Last confirmed movement of snake. See moveSnake method
 
 	private int snakeSquares[][];  //represents all of the squares on the screen
 	//NOT pixels!
@@ -19,9 +20,14 @@ public class Snake {
 	//A non-zero number means part of the snake is in the square
 	//The head of the snake is 1, rest of segments are numbered in order
 
-	private int currentHeading;  //Direction snake is going in, ot direction user is telling snake to go
-	private int lastHeading;    //Last confirmed movement of snake. See moveSnake method
-	
+	private boolean ateTail = false;
+	private boolean hitWall = false;
+
+	//Warped Walls
+	private boolean portalOn = false;
+	public boolean isPortalOn() {return portalOn;}
+	public void setPortalOn(boolean portalOn) {this.portalOn = portalOn;}
+
 	private int snakeSize;   //size of snake - how many segments?
 
 	private int growthIncrement = 2; //how many squares the snake grows after it eats a kibble
