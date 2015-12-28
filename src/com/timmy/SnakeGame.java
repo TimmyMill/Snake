@@ -16,9 +16,7 @@ public class SnakeGame {
 	public final static int squareSize = 75;
 
 	protected static Snake snake ;
-
 	protected static Kibble kibble;
-
 	protected static Score score;
 
 	static final int BEFORE_GAME = 1;
@@ -39,6 +37,8 @@ public class SnakeGame {
 	 * This is the time between clock ticks, in milliseconds
 	 * 1000 milliseconds = 1 second */
 
+	protected static Timer timer;
+
 	static JFrame snakeFrame;
 	static DrawSnakeGamePanel snakePanel;
 	/* Framework for this class adapted from the Java Swing Tutorial, FrameDemo and Custom Painting Demo. You should find them useful too
@@ -48,7 +48,7 @@ public class SnakeGame {
 	private static void createAndShowGUI() {
 		//Create and set up the window.
 		snakeFrame = new JFrame();
-		snakeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		snakeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		snakeFrame.setSize(xPixelMaxDimension, yPixelMaxDimension);
 		snakeFrame.setUndecorated(true); //hide title bar
@@ -81,7 +81,7 @@ public class SnakeGame {
 	}
 
 	protected static void newGame() {
-		Timer timer = new Timer();
+		timer = new Timer();
 		GameClock clockTick = new GameClock(snake, kibble, score, snakePanel);
 		timer.scheduleAtFixedRate(clockTick, 0 , clockInterval);
 	}
