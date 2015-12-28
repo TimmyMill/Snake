@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * @author Timmy
  *
  */
-public class DrawSnakeGamePanel extends JPanel {
+public class DrawSnakeGamePanel extends GameBackground {
 	
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
 	
@@ -20,21 +20,14 @@ public class DrawSnakeGamePanel extends JPanel {
 
 	//Images
 	private Image cupcake;
-	private Image nebula;
-	GameBackground background;
 
 	DrawSnakeGamePanel(Snake s, Kibble k, Score sc){
 		this.snake = s;
 		this.kibble = k;
 		this.score = sc;
 
-//		ImageIcon food = new ImageIcon("cageCupcakeV1.png");
-		ImageIcon food = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/cageCupcakeV1.png");
+		ImageIcon food = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/cupcake.png");
 		cupcake = food.getImage();
-		background = new GameBackground();
-//		ImageIcon background = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/nebula751.png");
-//		nebula = background.getImage();
-
 	}
 	
 	public Dimension getPreferredSize() {
@@ -112,10 +105,6 @@ public class DrawSnakeGamePanel extends JPanel {
 		int maxY= SnakeGame.yPixelMaxDimension;
 		int squareSize = SnakeGame.squareSize;
 
-//		add(background);
-
-		g.clearRect(0, 0, maxX, maxY);
-
 		g.setColor(Color.RED);
 
 		//Draw grid - horizontal lines
@@ -130,24 +119,10 @@ public class DrawSnakeGamePanel extends JPanel {
 
 	private void displayKibble(Graphics g) {
 
-		//Draw the kibble in green
-//		g.setColor(Color.GREEN);
-//		BufferedImage img = null;
-//
-//		try {
-//			img = ImageIO.read(new File("com.timmy/cageCupcakeV1.png"));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		ImageIcon img = new ImageIcon("com.timmy/cageCupcakeV1.png");
-//		cupcake = food.getImage();
-
 		int x = kibble.getKibbleX() * SnakeGame.squareSize;
 		int y = kibble.getKibbleY() * SnakeGame.squareSize;
 
 		g.drawImage(cupcake, x, y, this);
-
-//		g.fillRect(x+1, y+1, SnakeGame.squareSize-2, SnakeGame.squareSize-2);
 
 	}
 
