@@ -177,15 +177,33 @@ public class Snake {
 			snakeHeadX ++ ;
 		}
 
-		//Does this make snake hit the wall?
+		/* Does the snake hit the wall?
+		*/
 		if (snakeHeadX >= maxX || snakeHeadX < 0 || snakeHeadY >= maxY || snakeHeadY < 0 ) {
-			hitWall = true;	
-			SnakeGame.setGameStage(SnakeGame.GAME_OVER);
-			return;
+
+			//if the portal is off
+			if (!isPortalOn()) {
+				hitWall = true;
+				SnakeGame.setGameStage(SnakeGame.GAME_OVER);
+				return;
+			}
+
+			//if the portal is on
+			else if (isPortalOn()) {
+				//if the snake hits the right wall
+				if (snakeHeadX >= maxX) snakeHeadX = 0;
+				//if the snake hits the left wall
+				if (snakeHeadX < 0) snakeHeadX = maxX - 1;
+				//if the snake hits the top
+				if (snakeHeadY >= maxY) snakeHeadY = 0;
+				//if the snake hits the bottom
+				if (snakeHeadY < 0 ) snakeHeadY = maxY - 1;
+			}
+
 		}
 
-		//Does this make the snake eat its tail?
-
+		/* Does the snake hit itself?
+		*/
 		if (snakeSquares[snakeHeadX][snakeHeadY] != 0) {
 
 			ateTail = true;
@@ -275,6 +293,7 @@ public class Snake {
 	public void reset() {
 		hitWall = false;
 		ateTail = false;
+		portalOn = false;
 		fillSnakeSquaresWithZeros();
 		createStartSnake();
 

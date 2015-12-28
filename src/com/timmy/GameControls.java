@@ -44,8 +44,7 @@ public class GameControls implements KeyListener{
 				snake.reset();
 				Score.resetScore();
 				//Cancel the timer and terminate any remaining tasks
-				SnakeGame.timer.cancel();
-				SnakeGame.timer.purge();
+				SnakeGame.resetTimer();
 
 				//Need to start the timer and start the game again
 				SnakeGame.newGame();

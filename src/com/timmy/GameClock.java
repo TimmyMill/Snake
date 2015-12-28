@@ -28,7 +28,6 @@ public class GameClock extends TimerTask {
 				break;
 			}
 			case SnakeGame.DURING_GAME: {
-				//
 				snake.moveSnake();
 				if (snake.didEatKibble(kibble)) {
 					//tell kibble to update
@@ -38,11 +37,11 @@ public class GameClock extends TimerTask {
 				break;
 			}
 			case SnakeGame.GAME_OVER: {
-				this.cancel();		//Stop the Timer	
-				break;	
+				this.cancel();
+				break;
 			}
 			case SnakeGame.GAME_WON: {
-				this.cancel();   //stop timer
+				this.cancel();
 				break;
 			}
 
