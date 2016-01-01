@@ -11,7 +11,7 @@ public class Score {
 	protected static int highScore = 0;
 	protected static int increment;
 	
-	public Score(){
+	Score(){
 		score = 0;
 		increment = 1;  //how many points for eating a kibble
 		//Possible TODO get more points for eating kibbles, the longer the snake gets?

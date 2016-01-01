@@ -10,8 +10,8 @@ public class SnakeGame {
 	public final static int xPixelMaxDimension = 751;
 	public final static int yPixelMaxDimension = 751;
 
-	public static int xSquares ;
-	public static int ySquares ;
+	static int xSquares ;
+	static int ySquares ;
 
 	public final static int squareSize = 75;
 
