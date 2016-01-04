@@ -109,7 +109,9 @@ public class DrawSnakeGamePanel extends GameBackground {
 		int maxY= SnakeGame.yPixelMaxDimension;
 		int squareSize = SnakeGame.squareSize;
 
-		g.setColor(Color.RED);
+		g.setColor(Color.decode("#9932CC"));
+
+//		g.setColor(Color.RED);
 
 		//Draw grid - horizontal lines
 		for (int y=0; y <= maxY ; y+= squareSize){
@@ -150,17 +152,17 @@ public class DrawSnakeGamePanel extends GameBackground {
 	private void displayInstructions(Graphics g) {
 		double centerX = SnakeGame.xPixelMaxDimension / 2;
 		double centerY = SnakeGame.yPixelMaxDimension / 2;
-//		g.clearRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
-		g.drawRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
-//        g.drawString("Press any key to begin!",50,50);
+
+		double x = SnakeGame.xPixelMaxDimension / 3;
+		double y = SnakeGame.yPixelMaxDimension / 3;
 		g.setColor(Color.decode("#9932CC"));
+		g.fillRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
 //		g.setColor(Color.decode("#8A2BE2"));
 
-		g.drawString("Press any key to begin!", (int)centerX, (int)centerY);
-//        g.drawString("Press q to quit the game",50,100);
-		g.drawString("Press q to quit the game", (int)centerX, (int)centerY + 25);
-//		g.drawString("Press w to toggle portals on/off", 50, 150);
-		g.drawString("Press w to toggle portals on/off", (int)centerX, (int)centerY + 50);
-    	}
+		g.setColor(Color.decode("#FF8C00"));
+		g.drawString("Press any key to begin!", (int)x, (int)y);
+		g.drawString("Press q to quit the game", (int)x, (int)y + 25);
+		g.drawString("Press w to toggle portals on/off", (int)x, (int)y + 50);
+	}
 
 }
