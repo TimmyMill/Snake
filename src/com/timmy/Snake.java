@@ -260,17 +260,31 @@ public class Snake {
 		return false;
 	}
 
-	public String toString(){
-		String textSnake = "";
-		//This looks the wrong way around. Actually need to do it this way or snake is drawn flipped 90 degrees. 
-		for (int y = 0 ; y < maxY ; y++) {
-			for (int x = 0 ; x < maxX ; x++){
-				textSnake = textSnake + snakeSquares[x][y];
+	public String toString() { //FINDBUGS
+		StringBuilder buffer = new StringBuilder();
+		//This looks the wrong way around. Actually need to do it this way or snake is drawn flipped 90 degrees.
+		String textSnake = null;
+		for (int y = 0; y < maxY; y++) {
+			for (int x = 0; x < maxX; x++) {
+				buffer.append(snakeSquares[x][y]);
 			}
+			textSnake = buffer.toString();
 			textSnake += "\n";
 		}
 		return textSnake;
 	}
+
+//	public String toString(){
+//		String textSnake = "";
+//		//This looks the wrong way around. Actually need to do it this way or snake is drawn flipped 90 degrees.
+//		for (int y = 0 ; y < maxY ; y++) {
+//			for (int x = 0 ; x < maxX ; x++){
+//				textSnake = textSnake + snakeSquares[x][y];
+//			}
+//			textSnake += "\n";
+//		}
+//		return textSnake;
+//	}
 
 	public boolean wonGame() {
 

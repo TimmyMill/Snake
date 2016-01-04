@@ -48,22 +48,26 @@ public class DrawSnakeGamePanel extends GameBackground {
         gameStage = SnakeGame.getGameStage();
         
         switch (gameStage) {
-        case 1: {
-        	displayInstructions(g);
-        	break;
-        } 
-        case 2 : {
-        	displayGame(g);
-        	break;
-        }
-        case 3: {
-        	displayGameOver(g);
-        	break;
-        }
-        case 4: {
-        	displayGameWon(g);
-        	break;
-        }
+			case 1: {
+				displayInstructions(g);
+				break;
+			}
+			case 2 : {
+				displayGame(g);
+				break;
+			}
+			case 3: {
+				displayGameOver(g);
+				break;
+			}
+			case 4: {
+				displayGameWon(g);
+				break;
+			}
+			default: {
+				System.out.println("Not in a game stage");
+				break;
+			}
         }
 
     }

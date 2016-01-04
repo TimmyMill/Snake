@@ -44,6 +44,10 @@ public class GameClock extends TimerTask {
 				this.cancel();
 				break;
 			}
+			default: {
+				System.out.println("Not in a game stage");
+				break;
+			}
 
 		}
 				
