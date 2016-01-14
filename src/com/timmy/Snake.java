@@ -37,6 +37,12 @@ public class Snake {
 	private int maxX, maxY, squareSize;  
 	private int snakeHeadX, snakeHeadY; //store coordinates of head - first segment
 
+	public int getMaxX() {return maxX;}
+	public int getMaxY() {return maxY;}
+
+	public int getSnakeHeadX() {return snakeHeadX;}
+	public int getSnakeHeadY() {return snakeHeadY;}
+
 	public Snake(int maxX, int maxY, int squareSize){
 		this.maxX = maxX;
 		this.maxY = maxY;
