@@ -2,11 +2,16 @@ package com.timmy;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
 
 public class GameControls implements KeyListener{
 	
 	Snake snake;
-	
+
+	private static boolean paused = false;
+	public static boolean isPaused() {return paused;}
+	public static void setPaused(boolean paused) {GameControls.paused = paused;}
+
 	GameControls(Snake s){
 		this.snake = s;
 	}
@@ -70,6 +75,21 @@ public class GameControls implements KeyListener{
 			if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
 				//System.out.println("snake right");
 				snake.snakeRight();
+			}
+
+			//Pause
+			if (ev.getKeyCode() == KeyEvent.VK_SPACE) {
+				if (isPaused()) {
+					System.out.println("resume");
+					SnakeGame.newGame();
+					setPaused(false);
+				}
+				else if (!isPaused()) {
+					System.out.println("paused");
+					SnakeGame.timer.cancel();
+					SnakeGame.timer.purge();
+					setPaused(true);
+				}
 			}
 
 			/* Toggle Maze on/off

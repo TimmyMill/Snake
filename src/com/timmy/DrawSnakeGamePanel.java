@@ -23,7 +23,7 @@ public class DrawSnakeGamePanel extends GameBackground {
 	private Image leftPortal;
 	private Image rightPortal;
 
-	DrawSnakeGamePanel(Snake s, Kibble k, Score sc){
+	DrawSnakeGamePanel(Snake s, Kibble k, Score sc) {
 		this.snake = s;
 		this.kibble = k;
 		this.score = sc;
@@ -145,21 +145,22 @@ public class DrawSnakeGamePanel extends GameBackground {
 		int maxX = snake.getMaxX();
 		int maxY = snake.getMaxY();
 
-		if (snake.isPortalOn()) {
+//		if (snake.isPortalOn()) {
+//
+//			LinkedList<Point> coordinates = snake.segmentsToDraw();
+////			Point head = coordinates.pop();
+//
+//			for (Point p : coordinates) {
+//				if (p.getX() < 0) {
+//					System.out.println("Left");
+//					g.drawImage(leftPortal, 0, (int)p.getY(), this);
+//				}
+//				if (p.getX() > maxX) {
+//					System.out.println(p.getX());
+////					System.out.println("Right");
+//					g.drawImage(rightPortal, maxX - 1, (int)p.getY(), this);
+//				}
 
-			LinkedList<Point> coordinates = snake.segmentsToDraw();
-//			Point head = coordinates.pop();
-
-			for (Point p : coordinates) {
-				if (p.getX() < 0) {
-					System.out.println("Left");
-					g.drawImage(leftPortal, 0, (int)p.getY(), this);
-				}
-				if (p.getX() > maxX) {
-					System.out.println(p.getX());
-//					System.out.println("Right");
-					g.drawImage(rightPortal, maxX - 1, (int)p.getY(), this);
-				}
 //				if (snakeHeadY >= maxY) snakeHeadY = 0;
 //				if (snakeHeadY < 0 ) snakeHeadY = maxY - 1;
 //
@@ -171,8 +172,8 @@ public class DrawSnakeGamePanel extends GameBackground {
 //					System.out.println("Right");
 //					g.drawImage(rightPortal, right, (int)p.getY(), this);
 //				}
-			}
-		}
+//			}
+//		}
 	}
 
 	private void displayKibble(Graphics g) {
@@ -185,18 +186,19 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 	private void displaySnake(Graphics g) {
+		int squareSize = SnakeGame.squareSize;
 
 		LinkedList<Point> coordinates = snake.segmentsToDraw();
-		
+
 		//Draw head
 		g.setColor(Color.decode("#D2691E")); //chocolate
 		Point head = coordinates.pop();
-		g.fillOval((int)head.getX(), (int)head.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
+		g.fillOval((int)head.getX(), (int)head.getY(), squareSize, squareSize);
 		
 		//Draw rest of snake
 		g.setColor(Color.decode("#FF8C00")); //dark orange
 		for (Point p : coordinates) {
-			g.fillOval((int)p.getX(), (int)p.getY(), SnakeGame.squareSize, SnakeGame.squareSize);
+			g.fillOval((int)p.getX(), (int)p.getY(), squareSize, squareSize);
 		}
 
 	}
@@ -213,8 +215,9 @@ public class DrawSnakeGamePanel extends GameBackground {
 
 		g.setColor(Color.decode("#FF8C00")); //dark orange
 		g.drawString("Press any key to begin!", (int)x, (int)y);
-		g.drawString("Press q to quit the game", (int)x, (int)y + 25);
+		g.drawString("Press m to toggle maze on/off", (int)x, (int)y + 25);
 		g.drawString("Press w to toggle portals on/off", (int)x, (int)y + 50);
+		g.drawString("Press q to quit the game", (int)x, (int)y + 75);
 	}
 
 }
