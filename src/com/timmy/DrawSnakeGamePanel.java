@@ -11,9 +11,9 @@ import java.util.LinkedList;
  *
  */
 public class DrawSnakeGamePanel extends GameBackground {
-	
+
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
-	
+
 	private Snake snake;
 	private Kibble kibble;
 	private Score score;
@@ -108,26 +108,36 @@ public class DrawSnakeGamePanel extends GameBackground {
 		displayGameGrid(g);
 		displaySnake(g);
 		displayKibble(g);
+		displayMazes(g);
 		displayPortal(g);
 	}
 
 	private void displayGameGrid(Graphics g) {
+		//Display game grid if mazes are turned off
+		if (!snake.isMazeOn()) {
 
-		int maxX = SnakeGame.xPixelMaxDimension;
-		int maxY= SnakeGame.yPixelMaxDimension;
-		int squareSize = SnakeGame.squareSize;
+			int maxX = SnakeGame.xPixelMaxDimension;
+			int maxY = SnakeGame.yPixelMaxDimension;
+			int squareSize = SnakeGame.squareSize;
 
-		g.setColor(Color.decode("#9932CC"));
+			g.setColor(Color.decode("#9932CC"));
 
-//		g.setColor(Color.RED);
-
-		//Draw grid - horizontal lines
-		for (int y=0; y <= maxY ; y+= squareSize){
-			g.drawLine(0, y, maxX, y);
+			//Draw grid - horizontal lines
+			for (int y = 0; y <= maxY; y += squareSize) {
+				g.drawLine(0, y, maxX, y);
+			}
+			//Draw grid - vertical lines
+			for (int x = 0; x <= maxX; x += squareSize) {
+				g.drawLine(x, 0, x, maxY);
+			}
 		}
-		//Draw grid - vertical lines
-		for (int x=0; x <= maxX ; x+= squareSize){
-			g.drawLine(x, 0, x, maxY);
+
+	}
+
+	private void displayMazes(Graphics g) {
+		//Display mazes if they are turned on
+		if (snake.isMazeOn()) {
+
 		}
 	}
 

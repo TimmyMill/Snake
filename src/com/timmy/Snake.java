@@ -23,6 +23,11 @@ public class Snake {
 	private boolean ateTail = false;
 	private boolean hitWall = false;
 
+	//Maze
+	private boolean mazeOn = false;
+	public boolean isMazeOn() {return mazeOn;}
+	public void setMazeOn(boolean mazeOn) {this.mazeOn = mazeOn;}
+
 	//Warped Walls
 	private boolean portalOn = false;
 	public boolean isPortalOn() {return portalOn;}

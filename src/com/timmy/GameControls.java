@@ -72,6 +72,19 @@ public class GameControls implements KeyListener{
 				snake.snakeRight();
 			}
 
+			/* Toggle Maze on/off
+			*/
+			if (ev.getKeyCode() == KeyEvent.VK_M) {
+				if (snake.isMazeOn()) {
+					System.out.println("maze off");
+					snake.setMazeOn(false);
+				}
+				else if (!snake.isMazeOn()) {
+					System.out.println("maze on");
+					snake.setMazeOn(true);
+				}
+			}
+
 			/* Toggle Portal on/off
 			*/
 			if (ev.getKeyCode() == KeyEvent.VK_W) {
