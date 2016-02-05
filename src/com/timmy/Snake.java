@@ -189,8 +189,10 @@ public class Snake {
 			snakeHeadX ++ ;
 		}
 
+
 		/* Does the snake hit the wall?
 		*/
+
 		if (snakeHeadX >= maxX || snakeHeadX < 0 || snakeHeadY >= maxY || snakeHeadY < 0 ) {
 
 			//if the portal is off
@@ -214,8 +216,10 @@ public class Snake {
 
 		}
 
+
 		/* Does the snake hit itself?
 		*/
+
 		if (snakeSquares[snakeHeadX][snakeHeadY] != 0) {
 
 			ateTail = true;
@@ -223,40 +227,50 @@ public class Snake {
 			return;
 		}
 
+
 		/* Does the snake hit the maze wall?
-		   Otherwise, game is still on. Add new head
 		*/
 
-		ArrayList<Integer> topLeftWallX = new ArrayList<>();
-		ArrayList<Integer> topLeftWallY = new ArrayList<>();
+		if (currentHeading == DIRECTION_LEFT) //used when the snake is on the right side of maze walls
+		{
+			//Upper Left Wall
 
-		for (int x = 150; x <= 300 ; x++) {
-			topLeftWallX.add(x);
+			if ( (snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
+			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
+
+
 		}
 
-		if (currentHeading == DIRECTION_RIGHT) {
-			if ((snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 2 && snakeHeadY < 4)) hitWall = true;
-			System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+		if (currentHeading == DIRECTION_RIGHT) //used when the snake is on the left side of maze walls
+		{
+			//Upper Left Wall
+
+			if ( (snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
+			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+
 		}
 
-		if (currentHeading == DIRECTION_LEFT) {
-			if ((snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 2 && snakeHeadY < 4)) hitWall = true;
-			System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+		if (currentHeading == DIRECTION_UP)  //used when the snake is below the maze walls
+		{
+			//Upper Left Wall
+
+			if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
+			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
+
 		}
 
-//		if (snakeHeadX == 2 && (snakeHeadY > 2 && snakeHeadY < 3)) hitWall = true;
-//		System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+		if (currentHeading == DIRECTION_DOWN) //used when the snake is above the maze walls
+		{
+			//Upper Left Wall
 
-//		if (snakeHeadX == 150 && (snakeHeadY >= 150 || snakeHeadY <= 300)) hitWall = true;
-//		System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
-
-//		for (Integer y : topLeftWallY) {
-//			if (snakeHeadX == 150) {
-//				if (snakeHeadY == y) hitWall = true;
-//			}
-//		}
+			if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
+			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
 
 
+		}
+
+
+		//Otherwise, game is still on. Add new head
 		snakeSquares[snakeHeadX][snakeHeadY] = 1;
 
 		/* If snake did not just eat, then remove tail segment to keep snake the same length.
