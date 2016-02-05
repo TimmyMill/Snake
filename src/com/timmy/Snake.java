@@ -1,6 +1,7 @@
 package com.timmy;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Snake {
@@ -222,8 +223,41 @@ public class Snake {
 			return;
 		}
 
-		//Otherwise, game is still on. Add new head
-		snakeSquares[snakeHeadX][snakeHeadY] = 1; 
+		/* Does the snake hit the maze wall?
+		   Otherwise, game is still on. Add new head
+		*/
+
+		ArrayList<Integer> topLeftWallX = new ArrayList<>();
+		ArrayList<Integer> topLeftWallY = new ArrayList<>();
+
+		for (int x = 150; x <= 300 ; x++) {
+			topLeftWallX.add(x);
+		}
+
+		if (currentHeading == DIRECTION_RIGHT) {
+			if ((snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 2 && snakeHeadY < 4)) hitWall = true;
+			System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+		}
+
+		if (currentHeading == DIRECTION_LEFT) {
+			if ((snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 2 && snakeHeadY < 4)) hitWall = true;
+			System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+		}
+
+//		if (snakeHeadX == 2 && (snakeHeadY > 2 && snakeHeadY < 3)) hitWall = true;
+//		System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+
+//		if (snakeHeadX == 150 && (snakeHeadY >= 150 || snakeHeadY <= 300)) hitWall = true;
+//		System.out.println("(" + snakeHeadX + "," + snakeHeadY + ")");
+
+//		for (Integer y : topLeftWallY) {
+//			if (snakeHeadX == 150) {
+//				if (snakeHeadY == y) hitWall = true;
+//			}
+//		}
+
+
+		snakeSquares[snakeHeadX][snakeHeadY] = 1;
 
 		/* If snake did not just eat, then remove tail segment to keep snake the same length.
 		 * Find highest number, which should now be the same as snakeSize+1, and set to 0 */

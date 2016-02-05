@@ -135,9 +135,30 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 	private void displayMazes(Graphics g) {
+
+		int maxX = SnakeGame.xPixelMaxDimension;
+		int maxY = SnakeGame.yPixelMaxDimension;
+		int squareSize = SnakeGame.squareSize;
+
+		g.setColor(Color.decode("#9932CC"));
+
 		//Display mazes if they are turned on
 		if (snake.isMazeOn()) {
+			//upper left angle wall
+			g.drawLine(150, 150, 150, 300);
+			g.drawLine(150, 150, 300, 150);
 
+			// lower left angle wall
+			g.drawLine(150, 450, 150, 600);
+			g.drawLine(150, 600, 300, 600);
+
+			//upper right angle wall
+			g.drawLine(450, 150, 600, 150);
+			g.drawLine(600, 150, 600, 300);
+
+			//lower right angle wall
+			g.drawLine(450, 600, 600, 600);
+			g.drawLine(600, 450, 600, 600);
 		}
 	}
 
@@ -215,9 +236,10 @@ public class DrawSnakeGamePanel extends GameBackground {
 
 		g.setColor(Color.decode("#FF8C00")); //dark orange
 		g.drawString("Press any key to begin!", (int)x, (int)y);
-		g.drawString("Press m to toggle maze on/off", (int)x, (int)y + 25);
-		g.drawString("Press w to toggle portals on/off", (int)x, (int)y + 50);
-		g.drawString("Press q to quit the game", (int)x, (int)y + 75);
+		g.drawString("Press the spacebar to pause", (int)x, (int)y + 50);
+		g.drawString("Press m to toggle maze on/off", (int)x, (int)y + 100);
+		g.drawString("Press w to toggle portals on/off", (int)x, (int)y + 150);
+		g.drawString("Press q to quit the game", (int)x, (int)y + 200);
 	}
 
 }

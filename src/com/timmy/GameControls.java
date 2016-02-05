@@ -12,7 +12,7 @@ public class GameControls implements KeyListener{
 	public static boolean isPaused() {return paused;}
 	public static void setPaused(boolean paused) {GameControls.paused = paused;}
 
-	GameControls(Snake s){
+	GameControls(Snake s) {
 		this.snake = s;
 	}
 	
