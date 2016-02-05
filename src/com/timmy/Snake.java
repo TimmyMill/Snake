@@ -238,6 +238,10 @@ public class Snake {
 			if ( (snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
 			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
 
+			//Lower Left Wall
+
+			if ( (snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
+			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
 
 		}
 
@@ -246,6 +250,11 @@ public class Snake {
 			//Upper Left Wall
 
 			if ( (snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
+			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+
+			//Lower Left Wall
+
+			if ( (snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
 			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
 
 		}
@@ -257,6 +266,12 @@ public class Snake {
 			if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
 			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
 
+			//Lower Left Wall
+
+			if ((snakeHeadY < 8 && snakeHeadY + 1 >= 8) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
+			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
+
+
 		}
 
 		if (currentHeading == DIRECTION_DOWN) //used when the snake is above the maze walls
@@ -266,6 +281,10 @@ public class Snake {
 			if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
 			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
 
+			//Lower Left Wall
+
+			if ((snakeHeadY == 8 && snakeHeadY - 1 < 8) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
+			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
 
 		}
 
