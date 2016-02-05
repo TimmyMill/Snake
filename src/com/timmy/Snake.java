@@ -248,6 +248,11 @@ public class Snake {
 			if ( (snakeHeadX < 8 && snakeHeadX + 1 >= 8) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
 			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
 
+			//Lower Right Wall
+
+			if ( (snakeHeadX < 8 && snakeHeadX + 1 >= 8) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
+			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
+
 		}
 
 		if (currentHeading == DIRECTION_RIGHT) //used when the snake is on the left side of maze walls
@@ -265,6 +270,11 @@ public class Snake {
 			//Upper Right Wall
 
 			if ( (snakeHeadX == 8 && snakeHeadX - 1 < 8) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
+			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+
+			//Lower Right Wall
+
+			if ( (snakeHeadX == 8 && snakeHeadX - 1 < 8) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
 			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
 
 		}
@@ -286,6 +296,10 @@ public class Snake {
 			if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
 			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
 
+			//Lower Right Wall
+
+			if ((snakeHeadY < 8 && snakeHeadY + 1 >= 8) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
+			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
 
 		}
 
@@ -304,6 +318,11 @@ public class Snake {
 			//Upper Right Wall
 
 			if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
+			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
+
+			//Lower Right Wall
+
+			if ((snakeHeadY == 8 && snakeHeadY - 1 < 8) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
 			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
 
 		}
