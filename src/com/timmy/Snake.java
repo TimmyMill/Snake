@@ -1,7 +1,6 @@
 package com.timmy;
 
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Snake {
@@ -231,100 +230,88 @@ public class Snake {
 		/* Does the snake hit the maze wall?
 		*/
 
-		if (currentHeading == DIRECTION_LEFT) //used when the snake is on the right side of maze walls
+		if (mazeOn) //if mazes are turned on
 		{
-			//Upper Left Wall
 
-			if ( (snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
+			if (currentHeading == DIRECTION_LEFT) //used when the snake is on the right side of maze walls
+			{
+				//Upper Left Wall
+				if ((snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 2 && snakeHeadY < 4))
+					hitWall = true;
 
-			//Lower Left Wall
+				//Lower Left Wall
+				if ((snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 6 && snakeHeadY < 8))
+					hitWall = true;
 
-			if ( (snakeHeadX < 2 && snakeHeadX + 1 >= 2) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
+				//Upper Right Wall
+				if ((snakeHeadX < 8 && snakeHeadX + 1 >= 8) && (snakeHeadY >= 2 && snakeHeadY < 4))
+					hitWall = true;
 
-			//Upper Right Wall
+				//Lower Right Wall
+				if ((snakeHeadX < 8 && snakeHeadX + 1 >= 8) && (snakeHeadY >= 6 && snakeHeadY < 8))
+					hitWall = true;
 
-			if ( (snakeHeadX < 8 && snakeHeadX + 1 >= 8) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
+			}
 
-			//Lower Right Wall
+			if (currentHeading == DIRECTION_RIGHT) //used when the snake is on the left side of maze walls
+			{
+				//Upper Left Wall
+				if ((snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 2 && snakeHeadY < 4))
+					hitWall = true;
 
-			if ( (snakeHeadX < 8 && snakeHeadX + 1 >= 8) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is to the right of the wall
+				//Lower Left Wall
+				if ((snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 6 && snakeHeadY < 8))
+					hitWall = true;
 
-		}
+				//Upper Right Wall
+				if ((snakeHeadX == 8 && snakeHeadX - 1 < 8) && (snakeHeadY >= 2 && snakeHeadY < 4))
+					hitWall = true;
 
-		if (currentHeading == DIRECTION_RIGHT) //used when the snake is on the left side of maze walls
-		{
-			//Upper Left Wall
+				//Lower Right Wall
+				if ((snakeHeadX == 8 && snakeHeadX - 1 < 8) && (snakeHeadY >= 6 && snakeHeadY < 8))
+					hitWall = true;
 
-			if ( (snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+			}
 
-			//Lower Left Wall
+			if (currentHeading == DIRECTION_UP)  //used when the snake is below the maze walls
+			{
+				//Upper Left Wall
+				if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 2 && snakeHeadX < 4))
+					hitWall = true;
 
-			if ( (snakeHeadX == 2 && snakeHeadX - 1 < 2) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+				//Lower Left Wall
+				if ((snakeHeadY < 8 && snakeHeadY + 1 >= 8) && (snakeHeadX >= 2 && snakeHeadX < 4))
+					hitWall = true;
 
-			//Upper Right Wall
+				//Upper Right Wall
+				if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 6 && snakeHeadX < 8))
+					hitWall = true;
 
-			if ( (snakeHeadX == 8 && snakeHeadX - 1 < 8) && (snakeHeadY >= 2 && snakeHeadY < 4) ) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+				//Lower Right Wall
+				if ((snakeHeadY < 8 && snakeHeadY + 1 >= 8) && (snakeHeadX >= 6 && snakeHeadX < 8))
+					hitWall = true;
 
-			//Lower Right Wall
+			}
 
-			if ( (snakeHeadX == 8 && snakeHeadX - 1 < 8) && (snakeHeadY >= 6 && snakeHeadY < 8) ) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is to the left of the wall
+			if (currentHeading == DIRECTION_DOWN) //used when the snake is above the maze walls
+			{
+				//Upper Left Wall
+				if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 2 && snakeHeadX < 4))
+					hitWall = true;
 
-		}
+				//Lower Left Wall
+				if ((snakeHeadY == 8 && snakeHeadY - 1 < 8) && (snakeHeadX >= 2 && snakeHeadX < 4))
+					hitWall = true;
 
-		if (currentHeading == DIRECTION_UP)  //used when the snake is below the maze walls
-		{
-			//Upper Left Wall
+				//Upper Right Wall
+				if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 6 && snakeHeadX < 8))
+					hitWall = true;
 
-			if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
+				//Lower Right Wall
+				if ((snakeHeadY == 8 && snakeHeadY - 1 < 8) && (snakeHeadX >= 6 && snakeHeadX < 8))
+					hitWall = true;
 
-			//Lower Left Wall
-
-			if ((snakeHeadY < 8 && snakeHeadY + 1 >= 8) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
-
-			//Upper Right Wall
-
-			if ((snakeHeadY < 2 && snakeHeadY + 1 >= 2) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
-
-			//Lower Right Wall
-
-			if ((snakeHeadY < 8 && snakeHeadY + 1 >= 8) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
-			//x+1 is used to represent the segment behind the head to make sure the snake is below the wall
-
-		}
-
-		if (currentHeading == DIRECTION_DOWN) //used when the snake is above the maze walls
-		{
-			//Upper Left Wall
-
-			if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
-
-			//Lower Left Wall
-
-			if ((snakeHeadY == 8 && snakeHeadY - 1 < 8) && (snakeHeadX >= 2 && snakeHeadX < 4)) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
-
-			//Upper Right Wall
-
-			if ((snakeHeadY == 2 && snakeHeadY - 1 < 2) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
-
-			//Lower Right Wall
-
-			if ((snakeHeadY == 8 && snakeHeadY - 1 < 8) && (snakeHeadX >= 6 && snakeHeadX < 8)) hitWall = true;
-			//x-1 is used to represent the segment behind the head to make sure the snake is above the wall
-
+			}
 		}
 
 
@@ -342,6 +329,7 @@ public class Snake {
 				}
 			}
 		}
+
 		else {
 			//Snake has just eaten. leave tail as is.  Decrease justAte... variable by 1.
 			justAteMustGrowThisMuch -- ;
@@ -352,12 +340,12 @@ public class Snake {
 
 	}
 
-	protected boolean didHitWall(){
+	protected boolean didHitWall() {
 		return hitWall;
 
 	}
 
-	protected boolean didEatTail(){
+	protected boolean didEatTail() {
 		return ateTail;
 	}
 
