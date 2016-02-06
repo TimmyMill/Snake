@@ -10,8 +10,8 @@ import java.util.LinkedList;
  *
  */
 
-public class DrawSnakeGamePanel extends GameBackground {
-
+public class DrawSnakeGamePanel extends GameBackground
+{
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
 
 	private Snake snake;
@@ -23,7 +23,8 @@ public class DrawSnakeGamePanel extends GameBackground {
 	private Image leftPortal;
 	private Image rightPortal;
 
-	DrawSnakeGamePanel(Snake s, Kibble k, Score sc) {
+	DrawSnakeGamePanel(Snake s, Kibble k, Score sc)
+	{
 		this.snake = s;
 		this.kibble = k;
 		this.score = sc;
@@ -38,13 +39,15 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 	
-	public Dimension getPreferredSize() {
+	public Dimension getPreferredSize()
+	{
         return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
     }
 
 
     @Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+	{
         super.paintComponent(g);
 
         /* Where are we at in the game? 4 phases.. 
@@ -56,24 +59,34 @@ public class DrawSnakeGamePanel extends GameBackground {
 
         gameStage = SnakeGame.getGameStage();
         
-        switch (gameStage) {
-			case 1: {
+        switch (gameStage)
+		{
+			case 1:
+			{
 				displayInstructions(g);
 				break;
 			}
-			case 2 : {
+
+			case 2 :
+			{
 				displayGame(g);
 				break;
 			}
-			case 3: {
+
+			case 3:
+			{
 				displayGameOver(g);
 				break;
 			}
-			case 4: {
+
+			case 4:
+			{
 				displayGameWon(g);
 				break;
 			}
-			default: {
+
+			default:
+			{
 				System.out.println("Not in a game stage? Say what?");
 				break;
 			}
@@ -81,40 +94,40 @@ public class DrawSnakeGamePanel extends GameBackground {
     }
 
 
-	private void displayGameWon(Graphics g) {
+	private void displayGameWon(Graphics g)
+	{
 		// TODO Replace this with something really special!
 		g.clearRect(100,100,350,350);
 		g.drawString("YOU WON SNAKE!!!", 150, 150);
-		
 	}
 
 
-	private void displayGameOver(Graphics g) {
-
+	private void displayGameOver(Graphics g)
+	{
 		double centerX = SnakeGame.xPixelMaxDimension / 2;
 		double centerY = SnakeGame.yPixelMaxDimension / 2;
 		double x = SnakeGame.xPixelMaxDimension / 3;
 		double y = SnakeGame.yPixelMaxDimension / 3;
 
 		g.setColor(Color.decode("#9932CC"));
-		g.fillRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
+		g.fillRect((int) centerX / 2, (int) centerY / 2, (int) centerX, (int) centerY);
 
 		g.setColor(Color.decode("#FF8C00")); //dark orange
 
-		g.drawString("GAME OVER", (int)x, (int)y);
+		g.drawString("GAME OVER", (int) x, (int) y);
 
 		String textScore = score.getStringScore();
 		String textHighScore = score.getStringHighScore();
 		String newHighScore = score.newHighScore();
 
-		g.drawString("SCORE = " + textScore, (int)x, (int)y + 50);
-		g.drawString("HIGH SCORE = " + textHighScore, (int)x, (int)y + 100);
-		g.drawString(newHighScore, (int)x, (int)y + 150);
+		g.drawString("SCORE = " + textScore, (int) x, (int) y + 50);
+		g.drawString("HIGH SCORE = " + textHighScore, (int) x, (int) y + 100);
+		g.drawString(newHighScore, (int) x, (int) y + 150);
 
-		g.drawString("Press any key to play again", (int)x, (int)y + 200);
+		g.drawString("Press any key to play again", (int) x, (int) y + 200);
 
-		g.drawString("Press q to quit the game",(int)x, (int)y + 250);
-
+		g.drawString("Press q to quit the game", (int) x, (int) y + 250);
+	}
 //		g.clearRect(100,100,350,350);
 //		g.drawString("GAME OVER", 150, 150);
 		
@@ -126,10 +139,10 @@ public class DrawSnakeGamePanel extends GameBackground {
 //		g.drawString("press a key to play again", 150, 350);
 //		g.drawString("Press q to quit the game",150,400);
 
-	}
 
 
-	private void displayGame(Graphics g) {
+	private void displayGame(Graphics g)
+	{
 		displayGameGrid(g);
 		displaySnake(g);
 		displayKibble(g);
@@ -138,7 +151,8 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 
-	private void displayGameGrid(Graphics g) {
+	private void displayGameGrid(Graphics g)
+	{
 		//Display game grid if mazes are turned off
 		if (!snake.isMazeOn()) {
 
@@ -160,16 +174,13 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 
-	private void displayMazes(Graphics g) {
-
-		int maxX = SnakeGame.xPixelMaxDimension;
-		int maxY = SnakeGame.yPixelMaxDimension;
-		int squareSize = SnakeGame.squareSize;
-
+	private void displayMazes(Graphics g)
+	{
 		g.setColor(Color.decode("#9932CC"));
 
 		//Display mazes if they are turned on
-		if (snake.isMazeOn()) {
+		if (snake.isMazeOn())
+		{
 			//upper left angle wall
 			g.drawLine(150, 150, 150, 300);
 			g.drawLine(150, 150, 300, 150);
@@ -189,7 +200,8 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 
-	private void displayPortal(Graphics g) {
+	private void displayPortal(Graphics g)
+	{
 		int maxX = snake.getMaxX();
 		int maxY = snake.getMaxY();
 
@@ -225,17 +237,17 @@ public class DrawSnakeGamePanel extends GameBackground {
 	}
 
 
-	private void displayKibble(Graphics g) {
-
+	private void displayKibble(Graphics g)
+	{
 		int x = kibble.getKibbleX() * SnakeGame.squareSize;
 		int y = kibble.getKibbleY() * SnakeGame.squareSize;
 
 		g.drawImage(cupcake, x, y, this);
-
 	}
 
 
-	private void displaySnake(Graphics g) {
+	private void displaySnake(Graphics g)
+	{
 		int squareSize = SnakeGame.squareSize;
 
 		LinkedList<Point> coordinates = snake.segmentsToDraw();
@@ -250,11 +262,11 @@ public class DrawSnakeGamePanel extends GameBackground {
 		for (Point p : coordinates) {
 			g.fillOval((int)p.getX(), (int)p.getY(), squareSize, squareSize);
 		}
-
 	}
 
 
-	private void displayInstructions(Graphics g) {
+	private void displayInstructions(Graphics g)
+	{
 		double centerX = SnakeGame.xPixelMaxDimension / 2;
 		double centerY = SnakeGame.yPixelMaxDimension / 2;
 		double x = SnakeGame.xPixelMaxDimension / 3;
