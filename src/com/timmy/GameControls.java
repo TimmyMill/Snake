@@ -1,22 +1,23 @@
 package com.timmy;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
 
-public class GameControls implements KeyListener{
-	
+
+public class GameControls implements KeyListener
+{
 	Snake snake;
 
 	private static boolean paused = false;
 	public static boolean isPaused() {return paused;}
 	public static void setPaused(boolean paused) {GameControls.paused = paused;}
 
-	GameControls(Snake s) {
+	GameControls(Snake s)
+	{
 		this.snake = s;
 	}
 	
-	public void keyPressed(KeyEvent ev) {
+	public void keyPressed(KeyEvent ev)
+	{
 		/*
 		 * keyPressed events are for catching events like function keys, enter, arrow keys
 		 * We want to listen for arrow keys to move snake
@@ -33,7 +34,8 @@ public class GameControls implements KeyListener{
 		{ DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
 
 			/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
-			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME) {
+			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME)
+			{
 				//Start the game
 				SnakeGame.setGameStage(SnakeGame.DURING_GAME);
 				SnakeGame.newGame(); //Start game by calling newGame method
@@ -45,7 +47,8 @@ public class GameControls implements KeyListener{
 				return;
 			}
 
-			if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER) {
+			if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER)
+			{
 				snake.reset();
 				Score.resetScore();
 				//Cancel the timer and terminate any remaining tasks
@@ -58,41 +61,53 @@ public class GameControls implements KeyListener{
 				return;
 			}
 
-			/* Snake Movement Controls
-			*/
-			if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
+			/* Snake Movement Controls */
+
+			if (ev.getKeyCode() == KeyEvent.VK_DOWN)
+			{
 				//System.out.println("snake down");
 				snake.snakeDown();
 				panel.repaint();
 				return;
 			}
-			if (ev.getKeyCode() == KeyEvent.VK_UP) {
+
+			if (ev.getKeyCode() == KeyEvent.VK_UP)
+			{
 				//System.out.println("snake up");
 				snake.snakeUp();
 				panel.repaint();
 				return;
 			}
-			if (ev.getKeyCode() == KeyEvent.VK_LEFT) {
+
+			if (ev.getKeyCode() == KeyEvent.VK_LEFT)
+			{
 				//System.out.println("snake left");
 				snake.snakeLeft();
 				panel.repaint();
 				return;
 			}
-			if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
+
+			if (ev.getKeyCode() == KeyEvent.VK_RIGHT)
+			{
 				//System.out.println("snake right");
 				snake.snakeRight();
 				panel.repaint();
 				return;
 			}
 
-			//Pause
-			if (ev.getKeyCode() == KeyEvent.VK_SPACE) {
-				if (isPaused()) {
+			/* Pause Gameplay */
+
+			if (ev.getKeyCode() == KeyEvent.VK_SPACE)
+			{
+				if (isPaused())
+				{
 					System.out.println("resume");
 					SnakeGame.newGame();
 					setPaused(false);
 				}
-				else if (!isPaused()) {
+
+				else if (!isPaused())
+				{
 					System.out.println("paused");
 					SnakeGame.timer.cancel();
 					SnakeGame.timer.purge();
@@ -100,14 +115,18 @@ public class GameControls implements KeyListener{
 				}
 			}
 
-			/* Toggle Maze on/off
-			*/
-			if (ev.getKeyCode() == KeyEvent.VK_M) {
-				if (snake.isMazeOn()) {
+			/* Toggle Maze on/off */
+
+			if (ev.getKeyCode() == KeyEvent.VK_M)
+			{
+				if (snake.isMazeOn())
+				{
 					System.out.println("maze off");
 					snake.setMazeOn(false);
 				}
-				else if (!snake.isMazeOn()) {
+
+				else if (!snake.isMazeOn())
+				{
 					System.out.println("maze on");
 					snake.setMazeOn(true);
 				}
@@ -115,23 +134,26 @@ public class GameControls implements KeyListener{
 
 			/* Toggle Portal on/off
 			*/
-			if (ev.getKeyCode() == KeyEvent.VK_W) {
-				if (snake.isPortalOn()) {
+			if (ev.getKeyCode() == KeyEvent.VK_W)
+			{
+				if (snake.isPortalOn())
+				{
 					System.out.println("warped walls off");
 					snake.setPortalOn(false);
 				}
-				else if (!snake.isPortalOn()) {
+
+				else if (!snake.isPortalOn())
+				{
 					System.out.println("warped walls on");
 					snake.setPortalOn(true);
 				}
 			}
-
 		}
 
-		catch (ClassCastException cce) {
+		catch (ClassCastException cce)
+		{
 			cce.printStackTrace();
 		}
-
 	}
 
 	@Override
