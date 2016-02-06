@@ -5,35 +5,42 @@ package com.timmy;
  */
 
 
-public class Score {
-
+public class Score
+{
 	protected static int score;
 	protected static int highScore = 0;
 	protected static int increment;
 	
-	Score(){
+	Score()
+	{
 		score = 0;
 		increment = 1;  //how many points for eating a kibble
 		//Possible TODO get more points for eating kibbles, the longer the snake gets?
 	}
-	
-	public static void resetScore() {
+
+
+	public static void resetScore()
+	{
 		score = 0;	
 	}
-	
-	public static void increaseScore() {
+
+
+	public static void increaseScore()
+	{
 		score = score + increment;
 	}
-	
-	public int getScore(){
+
+
+	public int getScore()
+	{
 		return score;
 	}
 	
 	/* Checks if current score is greater than the current high score.
-	 * updates high score and returns true if so.
-	 */
-    public boolean gameOver(){
-		
+	 * updates high score and returns true if so. */
+
+    public boolean gameOver()
+	{
 		if (score > highScore) {
 			highScore = score;
 			return true;
@@ -41,14 +48,16 @@ public class Score {
 		return false;
 	}
 
-	//These methods are useful for displaying score at the end of the game
+	/* These methods are useful for displaying score at the end of the game */
 	
-	public String getStringScore() {
+	public String getStringScore()
+	{
 		return Integer.toString(score);
 	}
 
-	public String newHighScore() {
-		
+
+	public String newHighScore()
+	{
 		if (score > highScore) {
 			highScore = score;
 			return "New High Score!!";
@@ -57,7 +66,9 @@ public class Score {
 		}
 	}
 
-	public String getStringHighScore() {
+
+	public String getStringHighScore()
+	{
 		return Integer.toString(highScore);
 	}
 	
