@@ -35,7 +35,7 @@ public class Snake {
 
 	private int snakeSize;   //size of snake - how many segments?
 
-	private int growthIncrement = 2; //how many squares the snake grows after it eats a kibble
+	private int growthIncrement = 2; //how many squares the snake grows after it eats a food
 
 	private int justAteMustGrowThisMuch = 0;
 
@@ -356,9 +356,9 @@ public class Snake {
 		return true;
 	}
 
-	public boolean didEatKibble(Kibble kibble) {
-		//Is this kibble in the snake? It should be in the same square as the snake's head
-		if (kibble.getKibbleX() == snakeHeadX && kibble.getKibbleY() == snakeHeadY){
+	public boolean didEatKibble(Food food) {
+		//Is this food in the snake? It should be in the same square as the snake's head
+		if (food.getKibbleX() == snakeHeadX && food.getKibbleY() == snakeHeadY){
 			justAteMustGrowThisMuch += growthIncrement;
 			return true;
 		}
@@ -393,7 +393,7 @@ public class Snake {
 
 	public boolean wonGame() {
 
-		/* If all of the squares have snake segments in, the snake has eaten so much kibble
+		/* If all of the squares have snake segments in, the snake has eaten so much food
 		 * that it has filled the screen. Win! */
 		for (int x = 0 ; x < maxX ; x++) {
 			for (int y = 0 ; y < maxY ; y++){

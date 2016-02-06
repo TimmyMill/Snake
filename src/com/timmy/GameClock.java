@@ -5,14 +5,14 @@ import java.util.TimerTask;
 public class GameClock extends TimerTask
 {
 	Snake snake;
-	Kibble kibble;
+	Food food;
 	Score score;
 	DrawSnakeGamePanel gamePanel;
 		
-	public GameClock(Snake snake, Kibble kibble, Score score, DrawSnakeGamePanel gamePanel)
+	public GameClock(Snake snake, Food food, Score score, DrawSnakeGamePanel gamePanel)
 	{
 		this.snake = snake;
-		this.kibble = kibble;
+		this.food = food;
 		this.score = score;
 		this.gamePanel = gamePanel;
 	}
@@ -35,9 +35,9 @@ public class GameClock extends TimerTask
 			case SnakeGame.DURING_GAME:
 			{
 				snake.moveSnake();
-				if (snake.didEatKibble(kibble)) {
-					//tell kibble to update
-					kibble.moveKibble(snake);
+				if (snake.didEatKibble(food)) {
+					//tell food to update
+					food.moveKibble(snake);
 					Score.increaseScore();
 				}
 				break;

@@ -16,7 +16,7 @@ public class SnakeGame {
 	public final static int squareSize = 75;
 
 	protected static Snake snake ;
-	protected static Kibble kibble;
+	protected static Food food;
 	protected static Score score;
 
 	static final int BEFORE_GAME = 1;
@@ -55,7 +55,7 @@ public class SnakeGame {
 		snakeFrame.setVisible(true);
 		snakeFrame.setResizable(false);
 
-		snakePanel = new DrawSnakeGamePanel(snake, kibble, score);
+		snakePanel = new DrawSnakeGamePanel(snake, food, score);
 		snakePanel.setFocusable(true);
 		snakePanel.requestFocusInWindow(); //required to give this component the focus so it can generate KeyEvents
 
@@ -69,12 +69,12 @@ public class SnakeGame {
 	}
 
 	private static void initializeGame() {
-		//Set up score, snake and first kibble
+		//Set up score, snake and first food
 		xSquares = xPixelMaxDimension / squareSize;
 		ySquares = yPixelMaxDimension / squareSize;
 
 		snake = new Snake(xSquares, ySquares, squareSize);
-		kibble = new Kibble(snake);
+		food = new Food(snake);
 		score = new Score();
 
 		gameStage = BEFORE_GAME;
@@ -82,7 +82,7 @@ public class SnakeGame {
 
 	protected static void newGame() {
 		timer = new Timer();
-		GameClock clockTick = new GameClock(snake, kibble, score, snakePanel);
+		GameClock clockTick = new GameClock(snake, food, score, snakePanel);
 		timer.scheduleAtFixedRate(clockTick, 0 , clockInterval);
 	}
 

@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
-/** This class responsible for displaying the graphics, so the snake, grid, kibble, instruction text, and high score
+/** This class responsible for displaying the graphics, so the snake, grid, food, instruction text, and high score
  * 
  * @author Clara
  * @author Timmy
@@ -15,7 +15,7 @@ public class DrawSnakeGamePanel extends GameBackground
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
 
 	private Snake snake;
-	private Kibble kibble;
+	private Food food;
 	private Score score;
 
 	//Images
@@ -23,10 +23,10 @@ public class DrawSnakeGamePanel extends GameBackground
 	private Image leftPortal;
 	private Image rightPortal;
 
-	DrawSnakeGamePanel(Snake s, Kibble k, Score sc)
+	DrawSnakeGamePanel(Snake s, Food k, Score sc)
 	{
 		this.snake = s;
-		this.kibble = k;
+		this.food = k;
 		this.score = sc;
 
 		ImageIcon food = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/cupcake.png");
@@ -239,8 +239,8 @@ public class DrawSnakeGamePanel extends GameBackground
 
 	private void displayKibble(Graphics g)
 	{
-		int x = kibble.getKibbleX() * SnakeGame.squareSize;
-		int y = kibble.getKibbleY() * SnakeGame.squareSize;
+		int x = food.getKibbleX() * SnakeGame.squareSize;
+		int y = food.getKibbleY() * SnakeGame.squareSize;
 
 		g.drawImage(cupcake, x, y, this);
 	}

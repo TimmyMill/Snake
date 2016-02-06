@@ -14,7 +14,7 @@ public class Score
 	Score()
 	{
 		score = 0;
-		increment = 1;  //how many points for eating a kibble
+		increment = 1;  //how many points for eating a food
 		//Possible TODO get more points for eating kibbles, the longer the snake gets?
 	}
 
