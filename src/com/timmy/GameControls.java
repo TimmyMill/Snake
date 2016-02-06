@@ -29,11 +29,11 @@ public class GameControls implements KeyListener{
 		 * It would be a good idea to catch a ClassCastException here.
 		 */
 
-		try {
-			DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
+		try
+		{ DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
 
 			/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
-			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME){
+			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME) {
 				//Start the game
 				SnakeGame.setGameStage(SnakeGame.DURING_GAME);
 				SnakeGame.newGame(); //Start game by calling newGame method
@@ -45,7 +45,7 @@ public class GameControls implements KeyListener{
 				return;
 			}
 
-			if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER){
+			if (SnakeGame.getGameStage() == SnakeGame.GAME_OVER) {
 				snake.reset();
 				Score.resetScore();
 				//Cancel the timer and terminate any remaining tasks
@@ -63,18 +63,26 @@ public class GameControls implements KeyListener{
 			if (ev.getKeyCode() == KeyEvent.VK_DOWN) {
 				//System.out.println("snake down");
 				snake.snakeDown();
+				panel.repaint();
+				return;
 			}
 			if (ev.getKeyCode() == KeyEvent.VK_UP) {
 				//System.out.println("snake up");
 				snake.snakeUp();
+				panel.repaint();
+				return;
 			}
 			if (ev.getKeyCode() == KeyEvent.VK_LEFT) {
 				//System.out.println("snake left");
 				snake.snakeLeft();
+				panel.repaint();
+				return;
 			}
 			if (ev.getKeyCode() == KeyEvent.VK_RIGHT) {
 				//System.out.println("snake right");
 				snake.snakeRight();
+				panel.repaint();
+				return;
 			}
 
 			//Pause
@@ -136,7 +144,7 @@ public class GameControls implements KeyListener{
 		//keyTyped events are for user typing letters on the keyboard, anything that makes a character display on the screen
 		char keyPressed = ev.getKeyChar();
 		char q = 'q';
-		if( keyPressed == q){
+		if (keyPressed == q) {
 			System.exit(0);    //quit if user presses the q key.
 		}
 	}

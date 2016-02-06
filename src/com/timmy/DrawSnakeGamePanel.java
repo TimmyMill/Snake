@@ -1,5 +1,4 @@
 package com.timmy;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
@@ -10,6 +9,7 @@ import java.util.LinkedList;
  * @author Timmy
  *
  */
+
 public class DrawSnakeGamePanel extends GameBackground {
 
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
@@ -36,10 +36,12 @@ public class DrawSnakeGamePanel extends GameBackground {
 		rightPortal = right.getImage();
 
 	}
+
 	
 	public Dimension getPreferredSize() {
         return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
     }
+
 
     @Override
 	public void paintComponent(Graphics g) {
@@ -76,8 +78,8 @@ public class DrawSnakeGamePanel extends GameBackground {
 				break;
 			}
         }
-
     }
+
 
 	private void displayGameWon(Graphics g) {
 		// TODO Replace this with something really special!
@@ -85,24 +87,47 @@ public class DrawSnakeGamePanel extends GameBackground {
 		g.drawString("YOU WON SNAKE!!!", 150, 150);
 		
 	}
+
+
 	private void displayGameOver(Graphics g) {
 
-		g.clearRect(100,100,350,350);
-		g.drawString("GAME OVER", 150, 150);
-		
+		double centerX = SnakeGame.xPixelMaxDimension / 2;
+		double centerY = SnakeGame.yPixelMaxDimension / 2;
+		double x = SnakeGame.xPixelMaxDimension / 3;
+		double y = SnakeGame.yPixelMaxDimension / 3;
+
+		g.setColor(Color.decode("#9932CC"));
+		g.fillRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
+
+		g.setColor(Color.decode("#FF8C00")); //dark orange
+
+		g.drawString("GAME OVER", (int)x, (int)y);
+
 		String textScore = score.getStringScore();
 		String textHighScore = score.getStringHighScore();
 		String newHighScore = score.newHighScore();
+
+		g.drawString("SCORE = " + textScore, (int)x, (int)y + 50);
+		g.drawString("HIGH SCORE = " + textHighScore, (int)x, (int)y + 100);
+		g.drawString(newHighScore, (int)x, (int)y + 150);
+
+		g.drawString("Press any key to play again", (int)x, (int)y + 200);
+
+		g.drawString("Press q to quit the game",(int)x, (int)y + 250);
+
+//		g.clearRect(100,100,350,350);
+//		g.drawString("GAME OVER", 150, 150);
 		
-		g.drawString("SCORE = " + textScore, 150, 250);
+//		g.drawString("SCORE = " + textScore, 150, 250);
 		
-		g.drawString("HIGH SCORE = " + textHighScore, 150, 300);
-		g.drawString(newHighScore, 150, 400);
-		
-		g.drawString("press a key to play again", 150, 350);
-		g.drawString("Press q to quit the game",150,400);		
+//		g.drawString("HIGH SCORE = " + textHighScore, 150, 300);
+//		g.drawString(newHighScore, 150, 400);
+
+//		g.drawString("press a key to play again", 150, 350);
+//		g.drawString("Press q to quit the game",150,400);
 
 	}
+
 
 	private void displayGame(Graphics g) {
 		displayGameGrid(g);
@@ -111,6 +136,7 @@ public class DrawSnakeGamePanel extends GameBackground {
 		displayMazes(g);
 		displayPortal(g);
 	}
+
 
 	private void displayGameGrid(Graphics g) {
 		//Display game grid if mazes are turned off
@@ -131,8 +157,8 @@ public class DrawSnakeGamePanel extends GameBackground {
 				g.drawLine(x, 0, x, maxY);
 			}
 		}
-
 	}
+
 
 	private void displayMazes(Graphics g) {
 
@@ -161,6 +187,7 @@ public class DrawSnakeGamePanel extends GameBackground {
 			g.drawLine(600, 450, 600, 600);
 		}
 	}
+
 
 	private void displayPortal(Graphics g) {
 		int maxX = snake.getMaxX();
@@ -197,6 +224,7 @@ public class DrawSnakeGamePanel extends GameBackground {
 //		}
 	}
 
+
 	private void displayKibble(Graphics g) {
 
 		int x = kibble.getKibbleX() * SnakeGame.squareSize;
@@ -205,6 +233,7 @@ public class DrawSnakeGamePanel extends GameBackground {
 		g.drawImage(cupcake, x, y, this);
 
 	}
+
 
 	private void displaySnake(Graphics g) {
 		int squareSize = SnakeGame.squareSize;
@@ -223,6 +252,7 @@ public class DrawSnakeGamePanel extends GameBackground {
 		}
 
 	}
+
 
 	private void displayInstructions(Graphics g) {
 		double centerX = SnakeGame.xPixelMaxDimension / 2;
