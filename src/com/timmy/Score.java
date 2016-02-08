@@ -32,7 +32,8 @@ public class Score
 
     public boolean gameOver()
 	{
-		if (score > highScore) {
+		if (score > highScore)
+		{
 			highScore = score;
 			return true;
 		}
@@ -49,14 +50,14 @@ public class Score
 
 	public String newHighScore()
 	{
-		if (score > highScore) {
+		if (score > highScore)
+		{
 			highScore = score;
 			return "New High Score!!";
 		} else {
 			return "";
 		}
 	}
-
 
 	public String getStringHighScore() { return Integer.toString(highScore); }
 	
