@@ -3,12 +3,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 
-/** This class responsible for displaying the graphics, so the snake, grid, food, instruction text, and high score
- * 
- * @author Clara
- * @author Timmy
- *
- */
+/*****************************************************************************
+ * This class responsible for displaying the graphics, which include the:    *
+ *		- food                                                               *
+ * 		- game grid                                                          *
+ *		- game over                                                          *
+ * 		- high score                                                         *
+ * 		- instruction text                                                   *
+ *		- mazes                                                              *
+ * 		- snake                                                              *
+ *                                                                           *
+ * It extends the custom GameBackground class which extends the JPanel class *
+ * A switch statement is used in conjunction with the game stage from the    *
+ * SnakeGame class to decide which graphics to display                       *
+ *                                                                           *
+ * @author Clara                                                             *
+ * @author Timmy                                                             *
+ *                                                                           *
+ *****************************************************************************/
 
 public class SnakeGamePanel extends GameBackground
 {
@@ -49,13 +61,11 @@ public class SnakeGamePanel extends GameBackground
 	public void paintComponent(Graphics g)
 	{
         super.paintComponent(g);
-
         /* Where are we at in the game? 4 phases.. 
          * 1. Before game starts
          * 2. During game
          * 3. Game lost aka game over
-         * 4. or, game won
-         */
+         * 4. or, game won */
 
         gameStage = SnakeGame.getGameStage();
         
