@@ -23,7 +23,6 @@ import java.util.LinkedList;
 
 public class SnakeGamePanel extends GameBackground
 {
-
 	private Snake snake;
 	private Food food;
 	private Score score;
@@ -45,27 +44,26 @@ public class SnakeGamePanel extends GameBackground
 		leftPortal = left.getImage();
 		ImageIcon right = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/rightPortal.png");
 		rightPortal = right.getImage();
-
 	}
 
-	
+
 	public Dimension getPreferredSize()
 	{
-        return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
-    }
+		return new Dimension(SnakeGame.xPixelMaxDimension, SnakeGame.yPixelMaxDimension);
+	}
 
 
-    @Override
+	@Override
 	public void paintComponent(Graphics g)
 	{
-        super.paintComponent(g);
+		super.paintComponent(g);
 
 		int gameStage = SnakeGame.getGameStage();
-		//references the game stage from SnakeGame class
-		//integer value is used to determine which stage
+		//References the game stage from SnakeGame class
+		//Integer value is used to determine which stage
 		// to display using a switch statement
-        
-        switch (gameStage)
+
+		switch (gameStage)
 		{ // Where are we at in the game? 4 phases..
 			case 1:
 			{ // Before game starts
@@ -73,7 +71,7 @@ public class SnakeGamePanel extends GameBackground
 				break;
 			}
 
-			case 2 :
+			case 2:
 			{ // During game
 				displayGame(g);
 				break;
@@ -96,15 +94,26 @@ public class SnakeGamePanel extends GameBackground
 				System.out.println("Not in a game stage? Say what?");
 				break;
 			}
-        }
-    }
+		}
+	}
 
 
-	private void displayGameWon(Graphics g)
+	private void displayInstructions(Graphics g)
 	{
-		// TODO Replace this with something really special!
-		g.clearRect(100,100,350,350);
-		g.drawString("YOU WON SNAKE!!!", 150, 150);
+		double centerX = SnakeGame.xPixelMaxDimension / 2;
+		double centerY = SnakeGame.yPixelMaxDimension / 2;
+		double x = SnakeGame.xPixelMaxDimension / 3;
+		double y = SnakeGame.yPixelMaxDimension / 3;
+
+		g.setColor(Color.decode("#9932CC"));
+		g.fillRect((int) centerX / 2, (int) centerY / 2, (int) centerX, (int) centerY);
+
+		g.setColor(Color.decode("#FF8C00")); //dark orange
+		g.drawString("Press any key to begin!", (int) x, (int) y);
+		g.drawString("Press the spacebar to pause", (int) x, (int) y + 50);
+		g.drawString("Press m to toggle maze on/off", (int) x, (int) y + 100);
+		g.drawString("Press w to toggle portals on/off", (int) x, (int) y + 150);
+		g.drawString("Press q to quit the game", (int) x, (int) y + 200);
 	}
 
 
@@ -135,12 +144,19 @@ public class SnakeGamePanel extends GameBackground
 	}
 
 
+	private void displayGameWon(Graphics g)
+	{
+		// TODO Replace this with something really special!
+		g.clearRect(100, 100, 350, 350);
+		g.drawString("YOU WON SNAKE!!!", 150, 150);
+	}
+
 
 	private void displayGame(Graphics g)
 	{
 		displayGameGrid(g);
 		displaySnake(g);
-		displayKibble(g);
+		displayFood(g);
 		displayMazes(g);
 		displayPortal(g);
 	}
@@ -198,13 +214,14 @@ public class SnakeGamePanel extends GameBackground
 
 
 	private void displayPortal(Graphics g)
-	//TODO get this method to work properly
-	//It should display a portal image at the (x,y) coordinate where the snake goes off the screen
-	//It should then display a portal on the other side of the screen where the snake reappears
-	//These two images should be displayed at each point on the screen as long as the snake is within them
 	{
-		int maxX = snake.getMaxX();
-		int maxY = snake.getMaxY();
+		//TODO get this method to work properly
+		//It should display a portal image at the (x,y) coordinate where the snake goes off the screen
+		//It should then display a portal on the other side of the screen where the snake reappears
+		//These two images should be displayed at each point on the screen as long as the snake is within them
+	}
+//		int maxX = snake.getMaxX();
+//		int maxY = snake.getMaxY();
 
 //		if (snake.isPortalOn()) {
 //
@@ -235,10 +252,9 @@ public class SnakeGamePanel extends GameBackground
 //				}
 //			}
 //		}
-	}
 
 
-	private void displayKibble(Graphics g)
+	private void displayFood(Graphics g)
 	{
 		int x = food.getFoodX() * SnakeGame.squareSize;
 		int y = food.getFoodY() * SnakeGame.squareSize;
@@ -260,28 +276,10 @@ public class SnakeGamePanel extends GameBackground
 
 		//Draw rest of snake
 		g.setColor(Color.decode("#FF8C00")); //dark orange
-		for (Point p : coordinates) {
+		for (Point p : coordinates)
+		{
 			g.fillOval((int)p.getX(), (int)p.getY(), squareSize, squareSize);
 		}
-	}
-
-
-	private void displayInstructions(Graphics g)
-	{
-		double centerX = SnakeGame.xPixelMaxDimension / 2;
-		double centerY = SnakeGame.yPixelMaxDimension / 2;
-		double x = SnakeGame.xPixelMaxDimension / 3;
-		double y = SnakeGame.yPixelMaxDimension / 3;
-
-		g.setColor(Color.decode("#9932CC"));
-		g.fillRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
-
-		g.setColor(Color.decode("#FF8C00")); //dark orange
-		g.drawString("Press any key to begin!", (int)x, (int)y);
-		g.drawString("Press the spacebar to pause", (int)x, (int)y + 50);
-		g.drawString("Press m to toggle maze on/off", (int)x, (int)y + 100);
-		g.drawString("Press w to toggle portals on/off", (int)x, (int)y + 150);
-		g.drawString("Press q to quit the game", (int)x, (int)y + 200);
 	}
 
 }
