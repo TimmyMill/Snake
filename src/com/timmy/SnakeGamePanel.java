@@ -19,7 +19,6 @@ import java.util.LinkedList;
  *                                                                           *
  * @author Clara                                                             *
  * @author Timmy                                                             *
- *                                                                           *
  ****************************************************************************/
 
 public class SnakeGamePanel extends GameBackground

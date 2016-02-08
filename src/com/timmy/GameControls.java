@@ -2,6 +2,16 @@ package com.timmy;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/*********************************************************************
+ * Class is responsible for handling game controls using key events  *
+ * This includes:                                                    *
+ *	- Starting/Quitting the game                                     *
+ * 	- Toggling Mazes and Portals on/off                              *
+ * 	- Changing the snake's direction (up, down, left, right)         *
+ *                                                                   *
+ * @author Clara                                                     *
+ * @author Timmy                                                     *
+ ********************************************************************/
 
 public class GameControls implements KeyListener
 {
@@ -18,8 +28,7 @@ public class GameControls implements KeyListener
 	
 	public void keyPressed(KeyEvent ev)
 	{
-		/*
-		 * keyPressed events are for catching events like function keys, enter, arrow keys
+		/* KeyPressed events are for catching events like function keys, enter, arrow keys
 		 * We want to listen for arrow keys to move snake
 		 * Has to id if user pressed arrow key, and if so, send info to Snake object
 
@@ -27,13 +36,12 @@ public class GameControls implements KeyListener
 
 		 * Get the component which generated this event
 		 * Hopefully, a SnakeGamePanel object.
-		 * It would be a good idea to catch a ClassCastException here.
-		 */
+		 * It would be a good idea to catch a ClassCastException here. */
 
 		try
 		{ SnakeGamePanel panel = (SnakeGamePanel)ev.getComponent();
 
-			/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
+			//If the game hasn't started yet, start the game by setting GameStage to DURING_GAME
 			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME)
 			{
 				//Start the game
@@ -61,7 +69,7 @@ public class GameControls implements KeyListener
 				return;
 			}
 
-			/* Snake Movement Controls */
+			// Snake Movement Controls
 
 			if (ev.getKeyCode() == KeyEvent.VK_DOWN)
 			{
@@ -95,7 +103,7 @@ public class GameControls implements KeyListener
 				return;
 			}
 
-			/* Pause Gameplay */
+			// Pause Gameplay
 
 			if (ev.getKeyCode() == KeyEvent.VK_SPACE)
 			{
@@ -115,7 +123,7 @@ public class GameControls implements KeyListener
 				}
 			}
 
-			/* Toggle Maze on/off */
+			// Toggle Maze on/off
 
 			if (ev.getKeyCode() == KeyEvent.VK_M)
 			{
@@ -132,8 +140,8 @@ public class GameControls implements KeyListener
 				}
 			}
 
-			/* Toggle Portal on/off
-			*/
+			// Toggle Portal on/off
+
 			if (ev.getKeyCode() == KeyEvent.VK_W)
 			{
 				if (snake.isPortalOn())

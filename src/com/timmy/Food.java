@@ -7,8 +7,8 @@ import java.util.Random;
  * Any square is ok, so long as it doesn't have any snake segments in it.  *
  * There is only one Food and when the snake eats it, then it moves.       *
  *                                                                         *
- * @author clara                                                           *
- * @author timmy                                                           *
+ * @author Clara                                                           *
+ * @author Timmy                                                           *
  **************************************************************************/
 
 public class Food

@@ -9,7 +9,6 @@ import java.awt.*;
  * background image                                                              *
  *                                                                               *
  * @author Timmy                                                                 *
- *                                                                               *
  ********************************************************************************/
 
 public class GameBackground extends JPanel
