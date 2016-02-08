@@ -1,11 +1,10 @@
 package com.timmy;
-
 import javax.swing.*;
 import java.util.Timer;
 
 
-public class SnakeGame {
-
+public class SnakeGame
+{
 	/* Pixels in window. 751 to have 50-pixel squares plus 1 to draw a border on last square */
 	public final static int xPixelMaxDimension = 751;
 	public final static int yPixelMaxDimension = 751;
@@ -45,7 +44,8 @@ public class SnakeGame {
 	 * http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/FrameDemoProject/src/components/FrameDemo.java
 	 * http://docs.oracle.com/javase/tutorial/uiswing/painting/step2.html */
 
-	private static void createAndShowGUI() {
+	private static void createAndShowGUI()
+	{
 		//Create and set up the window.
 		snakeFrame = new JFrame();
 		snakeFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +68,9 @@ public class SnakeGame {
 		snakeFrame.setVisible(true);
 	}
 
-	private static void initializeGame() {
+
+	private static void initializeGame()
+	{
 		//Set up score, snake and first food
 		xSquares = xPixelMaxDimension / squareSize;
 		ySquares = yPixelMaxDimension / squareSize;
@@ -80,32 +82,41 @@ public class SnakeGame {
 		gameStage = BEFORE_GAME;
 	}
 
-	protected static void newGame() {
+	protected static void newGame()
+	{
 		timer = new Timer();
 		GameClock clockTick = new GameClock(snake, food, score, snakePanel);
 		timer.scheduleAtFixedRate(clockTick, 0 , clockInterval);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		/* Schedule a job for the event-dispatching thread:
 		 * creating and showing this application's GUI. */
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
+		SwingUtilities.invokeLater(new Runnable()
+		{
+			public void run()
+			{
 				initializeGame();
 				createAndShowGUI();
 			}
 		});
 	}
 	
-	static void resetTimer() {
+	static void resetTimer()
+	{
 		timer.cancel(); //stop the timer
 		timer.purge();  //terminates any remaining tasks
 	}
-	public static int getGameStage() {return gameStage;}
-	public static void setGameStage(int gameStage) {SnakeGame.gameStage = gameStage;}
 
-	public static boolean gameEnded() {
+
+	public static int getGameStage() { return gameStage; }
+	public static void setGameStage(int gameStage) { SnakeGame.gameStage = gameStage; }
+
+	public static boolean gameEnded()
+	{
 		//If gameStage is GAME_OVER or GAME_WON, boolean method returns true
 		return gameStage == GAME_OVER || gameStage == GAME_WON;
 	}
+
 }
