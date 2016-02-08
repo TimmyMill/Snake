@@ -31,7 +31,7 @@ public class SnakeGame
 	private static int gameStage = BEFORE_GAME;  //use this to figure out what should be happening. 
 	//Other classes like Snake and SnakeGamePanel will need to query this, and change its value
 
-	protected static long clockInterval = 500; //controls game speed
+	protected final static long CLOCK_INTERVAL = 500; //FINDBUGS, controls game speed
 	/* Every time the clock ticks, the snake moves
 	 * This is the time between clock ticks, in milliseconds
 	 * 1000 milliseconds = 1 second */
@@ -86,7 +86,7 @@ public class SnakeGame
 	{
 		timer = new Timer();
 		GameClock clockTick = new GameClock(snake, food, score, snakePanel);
-		timer.scheduleAtFixedRate(clockTick, 0 , clockInterval);
+		timer.scheduleAtFixedRate(clockTick, 0 , CLOCK_INTERVAL);
 	}
 
 	public static void main(String[] args)
