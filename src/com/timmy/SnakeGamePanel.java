@@ -23,7 +23,6 @@ import java.util.LinkedList;
 
 public class SnakeGamePanel extends GameBackground
 {
-	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
 
 	private Snake snake;
 	private Food food;
@@ -60,42 +59,40 @@ public class SnakeGamePanel extends GameBackground
 	public void paintComponent(Graphics g)
 	{
         super.paintComponent(g);
-        /* Where are we at in the game? 4 phases.. 
-         * 1. Before game starts
-         * 2. During game
-         * 3. Game lost aka game over
-         * 4. or, game won */
 
-        gameStage = SnakeGame.getGameStage();
+		int gameStage = SnakeGame.getGameStage();
+		//references the game stage from SnakeGame class
+		//integer value is used to determine which stage
+		// to display using a switch statement
         
         switch (gameStage)
-		{
+		{ // Where are we at in the game? 4 phases..
 			case 1:
-			{
+			{ // Before game starts
 				displayInstructions(g);
 				break;
 			}
 
 			case 2 :
-			{
+			{ // During game
 				displayGame(g);
 				break;
 			}
 
 			case 3:
-			{
+			{ // Game lost aka game over
 				displayGameOver(g);
 				break;
 			}
 
 			case 4:
-			{
+			{ // Game won
 				displayGameWon(g);
 				break;
 			}
 
 			default:
-			{
+			{ //we should never have to use this
 				System.out.println("Not in a game stage? Say what?");
 				break;
 			}
@@ -134,19 +131,8 @@ public class SnakeGamePanel extends GameBackground
 		g.drawString(newHighScore, (int) x, (int) y + 150);
 
 		g.drawString("Press any key to play again", (int) x, (int) y + 200);
-
 		g.drawString("Press q to quit the game", (int) x, (int) y + 250);
 	}
-//		g.clearRect(100,100,350,350);
-//		g.drawString("GAME OVER", 150, 150);
-		
-//		g.drawString("SCORE = " + textScore, 150, 250);
-		
-//		g.drawString("HIGH SCORE = " + textHighScore, 150, 300);
-//		g.drawString(newHighScore, 150, 400);
-
-//		g.drawString("press a key to play again", 150, 350);
-//		g.drawString("Press q to quit the game",150,400);
 
 
 
@@ -162,9 +148,9 @@ public class SnakeGamePanel extends GameBackground
 
 	private void displayGameGrid(Graphics g)
 	{
-		//Display game grid if mazes are turned off
-		if (!snake.isMazeOn()) {
-
+		//Display game grid
+		if (!snake.isMazeOn())
+		{ //if mazes aren't turned on, the game grid will be displayed
 			int maxX = SnakeGame.xPixelMaxDimension;
 			int maxY = SnakeGame.yPixelMaxDimension;
 			int squareSize = SnakeGame.squareSize;
@@ -172,11 +158,13 @@ public class SnakeGamePanel extends GameBackground
 			g.setColor(Color.decode("#9932CC"));
 
 			//Draw grid - horizontal lines
-			for (int y = 0; y <= maxY; y += squareSize) {
+			for (int y = 0; y <= maxY; y += squareSize)
+			{
 				g.drawLine(0, y, maxX, y);
 			}
 			//Draw grid - vertical lines
-			for (int x = 0; x <= maxX; x += squareSize) {
+			for (int x = 0; x <= maxX; x += squareSize)
+			{
 				g.drawLine(x, 0, x, maxY);
 			}
 		}
@@ -185,7 +173,7 @@ public class SnakeGamePanel extends GameBackground
 
 	private void displayMazes(Graphics g)
 	{
-		g.setColor(Color.decode("#9932CC"));
+		g.setColor(Color.BLACK);
 
 		//Display mazes if they are turned on
 		if (snake.isMazeOn())
@@ -210,6 +198,10 @@ public class SnakeGamePanel extends GameBackground
 
 
 	private void displayPortal(Graphics g)
+	//TODO get this method to work properly
+	//It should display a portal image at the (x,y) coordinate where the snake goes off the screen
+	//It should then display a portal on the other side of the screen where the snake reappears
+	//These two images should be displayed at each point on the screen as long as the snake is within them
 	{
 		int maxX = snake.getMaxX();
 		int maxY = snake.getMaxY();
@@ -217,28 +209,28 @@ public class SnakeGamePanel extends GameBackground
 //		if (snake.isPortalOn()) {
 //
 //			LinkedList<Point> coordinates = snake.segmentsToDraw();
-////			Point head = coordinates.pop();
+//			Point head = coordinates.pop();
 //
 //			for (Point p : coordinates) {
 //				if (p.getX() < 0) {
 //					System.out.println("Left");
-//					g.drawImage(leftPortal, 0, (int)p.getY(), this);
+//					//g.drawImage(leftPortal, 0, (int)p.getY(), this);
 //				}
 //				if (p.getX() > maxX) {
 //					System.out.println(p.getX());
-////					System.out.println("Right");
+//					//System.out.println("Right");
 //					g.drawImage(rightPortal, maxX - 1, (int)p.getY(), this);
 //				}
-
+//
 //				if (snakeHeadY >= maxY) snakeHeadY = 0;
 //				if (snakeHeadY < 0 ) snakeHeadY = maxY - 1;
 //
 //				if (p.getX() < 0 ) {
-//					System.out.println("Left");
+//					//System.out.println("Left");
 //					g.drawImage(leftPortal, 0, (int)p.getY(), this);
 //				}
 //				else if (p.getX() > right) {
-//					System.out.println("Right");
+//					//System.out.println("Right");
 //					g.drawImage(rightPortal, right, (int)p.getY(), this);
 //				}
 //			}
@@ -265,7 +257,7 @@ public class SnakeGamePanel extends GameBackground
 		g.setColor(Color.decode("#D2691E")); //chocolate
 		Point head = coordinates.pop();
 		g.fillOval((int)head.getX(), (int)head.getY(), squareSize, squareSize);
-		
+
 		//Draw rest of snake
 		g.setColor(Color.decode("#FF8C00")); //dark orange
 		for (Point p : coordinates) {
@@ -282,7 +274,6 @@ public class SnakeGamePanel extends GameBackground
 		double y = SnakeGame.yPixelMaxDimension / 3;
 
 		g.setColor(Color.decode("#9932CC"));
-//		g.setColor(Color.decode("#8A2BE2"));
 		g.fillRect( (int)centerX / 2, (int)centerY / 2, (int)centerX, (int)centerY);
 
 		g.setColor(Color.decode("#FF8C00")); //dark orange
