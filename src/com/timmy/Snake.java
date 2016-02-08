@@ -4,11 +4,12 @@ import java.util.LinkedList;
 
 public class Snake
 {
-	/* Directional Variables */
-	final int DIRECTION_UP = 0;
-	final int DIRECTION_DOWN = 1;
-	final int DIRECTION_LEFT = 2;
-	final int DIRECTION_RIGHT = 3;  //These are completely arbitrary numbers.
+	// Directional Variables
+	final static int DIRECTION_UP = 0;
+	final static int DIRECTION_DOWN = 1;
+	final static int DIRECTION_LEFT = 2;
+	final static int DIRECTION_RIGHT = 3;
+	//These are completely arbitrary numbers.
 
 	private int currentHeading;  //Direction snake is going in, ot direction user is telling snake to go
 	private int lastHeading;    //Last confirmed movement of snake. See moveSnake method

@@ -42,13 +42,13 @@ public class Score
 
 	/* These methods are useful for displaying score at the end of the game */
 	
-	public String getStringScore()
+	String getStringScore()
 	{
 		return Integer.toString(score);
 	}
 
 
-	public String newHighScore()
+	String newHighScore()
 	{
 		if (score > highScore)
 		{

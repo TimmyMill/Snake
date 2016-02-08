@@ -6,13 +6,13 @@ import java.util.Timer;
 public class SnakeGame
 {
 	/* Pixels in window. 751 to have 50-pixel squares plus 1 to draw a border on last square */
-	public final static int xPixelMaxDimension = 751;
-	public final static int yPixelMaxDimension = 751;
+	final static int xPixelMaxDimension = 751;
+	final static int yPixelMaxDimension = 751;
 
 	protected static int xSquares ;
 	protected static int ySquares ;
 
-	public final static int squareSize = 75;
+	final static int squareSize = 75;
 
 	protected static Snake snake ;
 	protected static Food food;
@@ -85,7 +85,7 @@ public class SnakeGame
 	protected static void newGame()
 	{
 		timer = new Timer();
-		GameClock clockTick = new GameClock(snake, food, score, snakePanel);
+		GameClock clockTick = new GameClock(snake, food, snakePanel);
 		timer.scheduleAtFixedRate(clockTick, 0 , CLOCK_INTERVAL);
 	}
 
