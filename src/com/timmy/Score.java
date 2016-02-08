@@ -1,9 +1,9 @@
 package com.timmy;
 
-/** Keeps track of, and displays the user's score
+/*******************************************************
+ * Class Keeps track of, and displays the user's score *
  * 
- */
-
+ ************************************************/
 
 public class Score
 {
@@ -19,22 +19,11 @@ public class Score
 	}
 
 
-	public static void resetScore()
-	{
-		score = 0;	
-	}
+	public static void resetScore() { score = 0; }
 
+	public static void increaseScore() { score = score + increment; }
 
-	public static void increaseScore()
-	{
-		score = score + increment;
-	}
-
-
-	public int getScore()
-	{
-		return score;
-	}
+	public int getScore() { return score; }
 	
 	/* Checks if current score is greater than the current high score.
 	 * updates high score and returns true if so. */
@@ -67,10 +56,7 @@ public class Score
 	}
 
 
-	public String getStringHighScore()
-	{
-		return Integer.toString(highScore);
-	}
+	public String getStringHighScore() { return Integer.toString(highScore); }
 	
 }
 

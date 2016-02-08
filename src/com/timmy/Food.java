@@ -1,42 +1,48 @@
 package com.timmy;
 import java.util.Random;
 
-/** Identifies a random square to display a food
- * Any square is ok, so long as it doesn't have any snake segments in it.
- * There is only one Food and when the snake eats it, then it moves.
- */
+/***************************************************************************
+ * Class is responsible for generating food for the snake to "eat"         *
+ * Identifies a random square to display a food                            *
+ * Any square is ok, so long as it doesn't have any snake segments in it.  *
+ * There is only one Food and when the snake eats it, then it moves.       *
+ *                                                                         *
+ * @author clara                                                           *
+ * @author timmy                                                           *
+ **************************************************************************/
 
 public class Food
 {
-	private int kibbleX; //This is the square number (not pixel)
-	private int kibbleY;  //This is the square number (not pixel)
-	
+	//x and y coordinates for the food
+	//this number is the square size, not pixel size
+	private int foodX;
+	private int foodY;
+
+	/* Food needs to know where the snake is, so it does not create a food in the snake
+	 * Pick a random location for food, check if it is in the snake, if in snake, try again */
+
 	public Food(Snake s)
 	{
-		/* Food needs to know where the snake is, so it does not create a food in the snake
-		 * Pick a random location for food, check if it is in the snake
-		 * If in snake, try again */
-
-		moveKibble(s);
+		moveFood(s);
 	}
 
 
-	protected void moveKibble(Snake s)
+	protected void moveFood(Snake s)
 	{
 		Random rng = new Random();
-		boolean kibbleInSnake = true;
-		while (kibbleInSnake)
+		boolean foodInSnake = true;
+		while (foodInSnake)
 		{
 			//Generate random food location
-			kibbleX = rng.nextInt(SnakeGame.xSquares);
-			kibbleY = rng.nextInt(SnakeGame.ySquares);
-			kibbleInSnake = s.isSnakeSegment(kibbleX, kibbleY);
+			foodX = rng.nextInt(SnakeGame.xSquares);
+			foodY = rng.nextInt(SnakeGame.ySquares);
+			foodInSnake = s.isSnakeSegment(foodX, foodY);
 		}
 	}
 
 
 	/* Getters */
-	public int getKibbleX() { return kibbleX; }
-	public int getKibbleY() { return kibbleY; }
+	public int getFoodX() { return foodX; }
+	public int getFoodY() { return foodY; }
 
 }

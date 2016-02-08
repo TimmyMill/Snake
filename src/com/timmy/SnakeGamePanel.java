@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.LinkedList;
 
 /*****************************************************************************
- * This class responsible for displaying the graphics, which include the:    *
+ * Class is responsible for displaying the graphics, which include the:      *
  *		- food                                                               *
  * 		- game grid                                                          *
  *		- game over                                                          *
@@ -20,7 +20,7 @@ import java.util.LinkedList;
  * @author Clara                                                             *
  * @author Timmy                                                             *
  *                                                                           *
- *****************************************************************************/
+ ****************************************************************************/
 
 public class SnakeGamePanel extends GameBackground
 {
@@ -249,8 +249,8 @@ public class SnakeGamePanel extends GameBackground
 
 	private void displayKibble(Graphics g)
 	{
-		int x = food.getKibbleX() * SnakeGame.squareSize;
-		int y = food.getKibbleY() * SnakeGame.squareSize;
+		int x = food.getFoodX() * SnakeGame.squareSize;
+		int y = food.getFoodY() * SnakeGame.squareSize;
 
 		g.drawImage(cupcake, x, y, this);
 	}

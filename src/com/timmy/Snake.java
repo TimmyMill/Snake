@@ -389,7 +389,7 @@ public class Snake
 	public boolean didEatKibble(Food food)
 	{
 		//Is this food in the snake? It should be in the same square as the snake's head
-		if (food.getKibbleX() == snakeHeadX && food.getKibbleY() == snakeHeadY)
+		if (food.getFoodX() == snakeHeadX && food.getFoodY() == snakeHeadY)
 		{
 			justAteMustGrowThisMuch += growthIncrement;
 			return true;
