@@ -1,9 +1,11 @@
 package com.timmy;
 
-/*******************************************************
- * Class Keeps track of, and displays the user's score *
- * 
- ************************************************/
+/********************************************************
+ * Class keeps track of, and displays the user's score  *
+ *                                                      *
+ * @author Clara                                        *
+ * @author Timmy                                        *
+ *******************************************************/
 
 public class Score
 {

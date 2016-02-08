@@ -1,5 +1,4 @@
 package com.timmy;
-
 import java.util.TimerTask;
 
 public class GameClock extends TimerTask
@@ -20,8 +19,8 @@ public class GameClock extends TimerTask
 
 	@Override
 	public void run()
-	{
-		// This method will be called every clock tick
+	{ // This method will be called every clock tick
+
 		int stage = SnakeGame.getGameStage();
 
 		switch (stage)
@@ -35,7 +34,8 @@ public class GameClock extends TimerTask
 			case SnakeGame.DURING_GAME:
 			{
 				snake.moveSnake();
-				if (snake.didEatKibble(food)) {
+				if (snake.didEatKibble(food))
+				{
 					//tell food to update
 					food.moveFood(snake);
 					Score.increaseScore();
@@ -56,12 +56,12 @@ public class GameClock extends TimerTask
 			}
 
 			default:
-			{
+			{ //it should not ever get here
 				System.out.println("Not in a game stage");
 				break;
 			}
 		}
-
-		gamePanel.repaint();		//In every circumstance, must update screen
+		//In every circumstance, must update screen
+		gamePanel.repaint();
 	}
 }
