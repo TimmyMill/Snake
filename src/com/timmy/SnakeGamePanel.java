@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  */
 
-public class DrawSnakeGamePanel extends GameBackground
+public class SnakeGamePanel extends GameBackground
 {
 	private static int gameStage = SnakeGame.BEFORE_GAME;  //use this to figure out what to paint
 
@@ -23,7 +23,7 @@ public class DrawSnakeGamePanel extends GameBackground
 	private Image leftPortal;
 	private Image rightPortal;
 
-	DrawSnakeGamePanel(Snake s, Food k, Score sc)
+	SnakeGamePanel(Snake s, Food k, Score sc)
 	{
 		this.snake = s;
 		this.food = k;

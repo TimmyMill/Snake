@@ -29,7 +29,7 @@ public class SnakeGame
 	 * Refer to these variables using statements such as SnakeGame.GAME_OVER */
 
 	private static int gameStage = BEFORE_GAME;  //use this to figure out what should be happening. 
-	//Other classes like Snake and DrawSnakeGamePanel will need to query this, and change its value
+	//Other classes like Snake and SnakeGamePanel will need to query this, and change its value
 
 	protected static long clockInterval = 500; //controls game speed
 	/* Every time the clock ticks, the snake moves
@@ -39,7 +39,7 @@ public class SnakeGame
 	protected static Timer timer;
 
 	static JFrame snakeFrame;
-	static DrawSnakeGamePanel snakePanel;
+	static SnakeGamePanel snakePanel;
 	/* Framework for this class adapted from the Java Swing Tutorial, FrameDemo and Custom Painting Demo. You should find them useful too
 	 * http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/components/FrameDemoProject/src/components/FrameDemo.java
 	 * http://docs.oracle.com/javase/tutorial/uiswing/painting/step2.html */
@@ -55,7 +55,7 @@ public class SnakeGame
 		snakeFrame.setVisible(true);
 		snakeFrame.setResizable(false);
 
-		snakePanel = new DrawSnakeGamePanel(snake, food, score);
+		snakePanel = new SnakeGamePanel(snake, food, score);
 		snakePanel.setFocusable(true);
 		snakePanel.requestFocusInWindow(); //required to give this component the focus so it can generate KeyEvents
 

@@ -26,12 +26,12 @@ public class GameControls implements KeyListener
 		 * Is game running? No? tell the game to draw grid, start, etc.
 
 		 * Get the component which generated this event
-		 * Hopefully, a DrawSnakeGamePanel object.
+		 * Hopefully, a SnakeGamePanel object.
 		 * It would be a good idea to catch a ClassCastException here.
 		 */
 
 		try
-		{ DrawSnakeGamePanel panel = (DrawSnakeGamePanel)ev.getComponent();
+		{ SnakeGamePanel panel = (SnakeGamePanel)ev.getComponent();
 
 			/* If the game hasn't started yet, start the game by setting GameStage to DURING_GAME */
 			if (SnakeGame.getGameStage() == SnakeGame.BEFORE_GAME)

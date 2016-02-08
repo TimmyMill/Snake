@@ -7,9 +7,9 @@ public class GameClock extends TimerTask
 	Snake snake;
 	Food food;
 	Score score;
-	DrawSnakeGamePanel gamePanel;
+	SnakeGamePanel gamePanel;
 		
-	public GameClock(Snake snake, Food food, Score score, DrawSnakeGamePanel gamePanel)
+	public GameClock(Snake snake, Food food, Score score, SnakeGamePanel gamePanel)
 	{
 		this.snake = snake;
 		this.food = food;
