@@ -60,6 +60,7 @@ public class GameClock extends TimerTask
 				System.out.println("Not in a game stage");
 				break;
 			}
+
 		}
 		//In every circumstance, must update screen
 		gamePanel.repaint();

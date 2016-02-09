@@ -75,32 +75,32 @@ public class GameControls implements KeyListener
 			{
 				//System.out.println("snake down");
 				snake.snakeDown();
-				panel.repaint();
-				return;
+//				panel.repaint();
+//				return;
 			}
 
 			if (ev.getKeyCode() == KeyEvent.VK_UP)
 			{
 				//System.out.println("snake up");
 				snake.snakeUp();
-				panel.repaint();
-				return;
+//				panel.repaint();
+//				return;
 			}
 
 			if (ev.getKeyCode() == KeyEvent.VK_LEFT)
 			{
 				//System.out.println("snake left");
 				snake.snakeLeft();
-				panel.repaint();
-				return;
+//				panel.repaint();
+//				return;
 			}
 
 			if (ev.getKeyCode() == KeyEvent.VK_RIGHT)
 			{
 				//System.out.println("snake right");
 				snake.snakeRight();
-				panel.repaint();
-				return;
+//				panel.repaint();
+//				return;
 			}
 
 			// Pause Gameplay
