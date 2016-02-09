@@ -17,7 +17,7 @@ public class GameBackground extends JPanel
 
     public GameBackground()
     {
-        ImageIcon background = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/nebula751.png");
+        ImageIcon background = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/nebula.png");
         nebula = background.getImage();
         Dimension size = new Dimension(nebula.getWidth(null), nebula.getHeight(null));
         setPreferredSize(size);
