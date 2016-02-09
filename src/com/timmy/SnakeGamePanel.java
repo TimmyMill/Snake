@@ -38,12 +38,9 @@ public class SnakeGamePanel extends GameBackground
 		this.food = k;
 		this.score = sc;
 
-		ImageIcon food = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/cupcake.png");
-		cupcake = food.getImage();
-		ImageIcon left = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/leftPortal.png");
-		leftPortal = left.getImage();
-		ImageIcon right = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/rightPortal.png");
-		rightPortal = right.getImage();
+		cupcake = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/cupcake.png").getImage();
+		leftPortal  = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/leftPortal.png").getImage();
+		rightPortal = new ImageIcon("/home/timmy/IdeaProjects/Snake/src/com/timmy/Images/rightPortal.png").getImage();
 	}
 
 
