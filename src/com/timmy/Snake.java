@@ -443,6 +443,7 @@ public class Snake
 		hitWall = false;
 		ateTail = false;
 		portalOn = false;
+		mazeOn = false;
 		fillSnakeSquaresWithZeros();
 		createStartSnake();
 	}
